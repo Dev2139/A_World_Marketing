@@ -32,6 +32,9 @@ interface Order {
   orderNumber: string;
   status: string;
   totalPrice: number;
+  subtotal?: number;
+  tax?: number;
+  shipping?: number;
   createdAt: string;
   products: Product[];
   customer: Customer;
@@ -222,18 +225,18 @@ export default function OrderSuccessPage() {
               <div className="flex justify-between py-2">
                 <span className="text-gray-700">Subtotal:</span>
                 <span className="text-gray-700">
-                  ${order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0).toFixed(2)}
+                  ${order.subtotal ? order.subtotal.toFixed(2) : order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0).toFixed(2)}
                 </span>
               </div>
               <div className="flex justify-between py-2">
-                <span className="text-gray-700">Tax (8%):</span>
+                <span className="text-gray-700">Tax:</span>
                 <span className="text-gray-700">
-                  ${(order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) * 0.08).toFixed(2)}
+                  ${order.tax ? order.tax.toFixed(2) : (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) * 0.08).toFixed(2)}
                 </span>
               </div>
               <div className="flex justify-between py-2 border-t border-gray-200 pt-2">
                 <span className="text-lg font-bold text-gray-900">Total:</span>
-                <span className="text-lg font-bold text-[#F05454]">${order.totalPrice.toFixed(2)}</span>
+                <span className="text-lg font-bold text-[#F05454]">${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) + (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) * 0.08)).toFixed(2)}</span>
               </div>
             </div>
           </div>

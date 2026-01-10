@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
@@ -41,6 +41,7 @@ export default function ProductDetailPage() {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<{[key: string]: number}>({});
+  const [showModal, setShowModal] = useState(false);
 
   // Load cart from localStorage
   useEffect(() => {
@@ -343,9 +344,14 @@ export default function ProductDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Product Images */}
             <div>
-              <div className="bg-gray-100 rounded-lg w-full h-96 flex items-center justify-center mb-4">
+              <div className="bg-gray-100 rounded-lg w-full h-96 flex items-center justify-center mb-4 relative">
                 {selectedImage ? (
-                  <img src={selectedImage} alt={product.name} className="w-full h-full object-contain" />
+                  <img 
+                    src={selectedImage} 
+                    alt={product.name} 
+                    className="w-full h-full object-contain cursor-pointer"
+                    onClick={() => setShowModal(true)}
+                  />
                 ) : (
                   <span className="text-gray-500">Product Image</span>
                 )}
@@ -531,7 +537,27 @@ export default function ProductDetailPage() {
           </div>
         )}
         
-
+        {/* Image Enlargement Modal */}
+        {showModal && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+            onClick={() => setShowModal(false)}
+          >
+            <div className="relative max-w-4xl max-h-4xl p-4" onClick={(e) => e.stopPropagation()}>
+              <button 
+                className="absolute top-4 right-4 text-white bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center z-10"
+                onClick={() => setShowModal(false)}
+              >
+                ✕
+              </button>
+              <img 
+                src={selectedImage} 
+                alt={product.name} 
+                className="max-w-full max-h-[80vh] object-contain"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

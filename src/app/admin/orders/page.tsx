@@ -12,6 +12,8 @@ export default function OrdersPage() {
     date: '',
     agent: ''
   });
+  const [updatingOrderId, setUpdatingOrderId] = useState<string | null>(null);
+  const [updatingOrderStatus, setUpdatingOrderStatus] = useState<string>('');
   const router = useRouter();
 
   useEffect(() => {
@@ -164,7 +166,7 @@ export default function OrdersPage() {
     <p><strong>Subtotal:</strong> $${order.subtotal?.toFixed(2) || (order.totalPrice && order.tax ? (Number(order.totalPrice) - Number(order.tax)).toFixed(2) : '0.00')}</p>
     <p><strong>Tax:</strong> $${order.tax?.toFixed(2) || '0.00'}</p>
     <p><strong>Shipping:</strong> $${order.shipping?.toFixed(2) || '0.00'}</p>
-    <p><strong>Total:</strong> $${order.totalPrice?.toFixed(2) || '0.00'}</p>
+    <p><strong>Total:</strong> $${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : order.totalPrice?.toFixed(2) || '0.00'}</p>
   </div>
   
   <div class="action-buttons">
@@ -203,6 +205,43 @@ export default function OrdersPage() {
     
     // Cleanup URL object after a delay
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
+  const updateOrderStatus = async (orderId: string, newStatus: string) => {
+    setUpdatingOrderId(orderId);
+    setUpdatingOrderStatus(newStatus);
+    
+    try {
+      const response = await fetch(`/api/admin/orders/${orderId}/status`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ status: newStatus }),
+      });
+      
+      if (response.ok) {
+        // Update the order in the local state
+        setOrders(prevOrders => 
+          prevOrders.map(order => 
+            order.id === orderId ? { ...order, status: newStatus } : order
+          )
+        );
+        
+        // Optionally, show a success message
+        alert('Order status updated successfully!');
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to update order status: ${errorData.message || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error updating order status:', error);
+      alert('An error occurred while updating the order status');
+    } finally {
+      setUpdatingOrderId(null);
+      setUpdatingOrderStatus('');
+    }
   };
 
   if (loading) {
@@ -315,7 +354,7 @@ export default function OrdersPage() {
                         </div>
                       </div>
                       <div className="text-sm text-gray-500">
-                        <p>Total: ${order.totalPrice?.toFixed(2) || 'N/A'}</p>
+                        <p>Total: ${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : order.totalPrice?.toFixed(2) || 'N/A'}</p>
                       </div>
                     </div>
                     
@@ -353,7 +392,7 @@ export default function OrdersPage() {
                         <p className="text-sm text-gray-500">Subtotal: ${order.subtotal?.toFixed(2) || 'N/A'}</p>
                         <p className="text-sm text-gray-500">Tax: ${order.tax?.toFixed(2) || 'N/A'}</p>
                         <p className="text-sm text-gray-500">Shipping: ${order.shipping?.toFixed(2) || '0.00'}</p>
-                        <p className="text-sm text-gray-500 font-medium">Total: ${order.totalPrice?.toFixed(2) || 'N/A'}</p>
+                        <p className="text-sm text-gray-500 font-medium">Total: ${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : order.totalPrice?.toFixed(2) || 'N/A'}</p>
                       </div>
                     </div>
                     
@@ -396,6 +435,25 @@ export default function OrdersPage() {
                           >
                             View Invoice
                           </button>
+                          
+                          {/* Order Status Dropdown */}
+                          <div className="flex items-center">
+                            <select
+                              value={order.status}
+                              onChange={(e) => updateOrderStatus(order.id, e.target.value)}
+                              disabled={updatingOrderId === order.id}
+                              className="ml-2 text-sm border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454]"
+                            >
+                              <option value="PENDING">Pending</option>
+                              <option value="CONFIRMED">Confirmed</option>
+                              <option value="SHIPPED">Shipped</option>
+                              <option value="DELIVERED">Delivered</option>
+                              <option value="CANCELLED">Cancelled</option>
+                            </select>
+                            {updatingOrderId === order.id && (
+                              <span className="ml-2 text-xs text-gray-500">Updating...</span>
+                            )}
+                          </div>
                         </div>
                         <span className="text-sm text-gray-500">
                           {new Date(order.createdAt).toLocaleString()}

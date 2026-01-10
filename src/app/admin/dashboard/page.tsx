@@ -102,31 +102,17 @@ export default function AdminDashboard() {
     fetchUser();
     fetchMetrics();
     fetchChartsData();
+    
+    // Set up auto-refresh interval for charts data
+    const interval = setInterval(() => {
+      fetchChartsData();
+    }, 30000); // Refresh every 30 seconds
+
+    return () => clearInterval(interval);
   }, [router]);
-
-  const handleLogout = async () => {
-    try {
-      await fetch('/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include',
-      });
-      router.push('/login');
-      router.refresh();
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
-      </div>
-    );
-  }
-
+  
   // Colors for charts
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+  const COLORS = ['#F05454', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -255,11 +241,13 @@ export default function AdminDashboard() {
                       <XAxis dataKey="date" stroke="#6b7280" />
                       <YAxis stroke="#6b7280" />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151' }} 
+                        contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151', borderRadius: '0.5rem' }} 
                         itemStyle={{ color: '#374151' }}
+                        formatter={(value) => [`$${value}`, 'Sales']}
+                        labelFormatter={(label) => `Date: ${label}`}
                       />
                       <Legend />
-                      <Bar dataKey="sales" fill="#F05454" name="Sales ($)" />
+                      <Bar dataKey="sales" fill="#F05454" name="Sales ($)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -279,11 +267,13 @@ export default function AdminDashboard() {
                       <XAxis dataKey="month" stroke="#6b7280" />
                       <YAxis stroke="#6b7280" />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151' }} 
+                        contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151', borderRadius: '0.5rem' }} 
                         itemStyle={{ color: '#374151' }}
+                        formatter={(value) => [`$${value}`, 'Revenue']}
+                        labelFormatter={(label) => `Month: ${label}`}
                       />
                       <Legend />
-                      <Bar dataKey="revenue" fill="#F05454" name="Revenue ($)" />
+                      <Bar dataKey="revenue" fill="#00C49F" name="Revenue ($)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -316,9 +306,9 @@ export default function AdminDashboard() {
                       ))}
                     </Pie>
                     <Tooltip 
-                      contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151' }} 
+                      contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151', borderRadius: '0.5rem' }} 
                       itemStyle={{ color: '#374151' }}
-                      formatter={(value: any) => [`$${value}`, 'Sales']}
+                      formatter={(value) => [`$${value}`, 'Sales']}
                     />
                     <Legend />
                   </PieChart>
