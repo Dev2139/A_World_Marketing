@@ -368,70 +368,70 @@ export default function CheckoutPage() {
     switch (currentStep) {
       case 1: // Shipping Address
         return (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-bold text-[#F05454] mb-6">Shipping Information</h2>
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl border border-purple-500/30 p-6">
+            <h2 className="text-xl font-bold text-pink-400 mb-6">Shipping Information</h2>
             
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <label className="block text-sm font-medium text-purple-300 mb-1">First Name</label>
                   <input
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                    className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                     placeholder="First name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <label className="block text-sm font-medium text-purple-300 mb-1">Last Name</label>
                   <input
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                    className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                     placeholder="Last name"
                   />
                 </div>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+                <label className="block text-sm font-medium text-purple-300 mb-1">Mobile Number</label>
                 <input
                   type="tel"
                   value={mobileNumber}
                   onChange={(e) => setMobileNumber(e.target.value)}
-                  className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                  className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                   placeholder="Enter your mobile number"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Shipping Address</label>
+                <label className="block text-sm font-medium text-purple-300 mb-1">Shipping Address</label>
                 <textarea
                   value={shippingAddress}
                   onChange={(e) => setShippingAddress(e.target.value)}
-                  className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                  className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                   rows={3}
                   placeholder="Enter your shipping address"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Billing Address (optional)</label>
+                <label className="block text-sm font-medium text-purple-300 mb-1">Billing Address (optional)</label>
                 <textarea
                   value={billingAddress}
                   onChange={(e) => setBillingAddress(e.target.value)}
-                  className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                  className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                   rows={3}
                   placeholder="Same as shipping if left empty"
                 />
               </div>
               
               {referralAgent && (
-                <div className="p-3 bg-gray-50 border border-gray-300 rounded-md">
-                  <p className="text-sm text-gray-700">Referral Agent: <span className="text-[#F05454]">{referralAgent}</span></p>
-                  <p className="text-xs text-gray-600 mt-1">Commission will be credited to their account</p>
+                <div className="p-3 bg-gray-700/50 border border-purple-500/50 rounded-lg">
+                  <p className="text-sm text-purple-200">Referral Agent: <span className="text-pink-400">{referralAgent}</span></p>
+                  <p className="text-xs text-purple-400 mt-1">Commission will be credited to their account</p>
                 </div>
               )}
               
@@ -439,10 +439,10 @@ export default function CheckoutPage() {
                 <button
                   onClick={nextStep}
                   disabled={!firstName || !lastName || !mobileNumber || !shippingAddress}
-                  className={`py-3 px-6 rounded-md transition-all duration-200 ${
+                  className={`py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 ${
                     !firstName || !lastName || !mobileNumber || !shippingAddress
-                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                      : 'bg-[#F05454] text-white hover:bg-[#D64545]'
+                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 shadow-lg hover:shadow-pink-500/30'
                   }`}
                 >
                   Continue to Payment
@@ -453,19 +453,19 @@ export default function CheckoutPage() {
         );
       case 2: // Payment Details
         return (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-bold text-[#F05454] mb-6">Payment Method</h2>
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl border border-purple-500/30 p-6">
+            <h2 className="text-xl font-bold text-pink-400 mb-6">Payment Method</h2>
             
             <div className="mb-6">
-              <div className="flex border-b border-gray-200">
+              <div className="flex border-b border-purple-500/50">
                 <button
-                  className={`pb-2 px-4 font-medium ${paymentMethod === 'card' ? 'text-[#F05454] border-b-2 border-[#F05454]' : 'text-gray-500'}`}
+                  className={`pb-2 px-4 font-medium ${paymentMethod === 'card' ? 'text-pink-400 border-b-2 border-pink-400' : 'text-purple-400'}`}
                   onClick={() => setPaymentMethod('card')}
                 >
                   Credit/Debit Card
                 </button>
                 <button
-                  className={`pb-2 px-4 font-medium ${paymentMethod === 'upi' ? 'text-[#F05454] border-b-2 border-[#F05454]' : 'text-gray-500'}`}
+                  className={`pb-2 px-4 font-medium ${paymentMethod === 'upi' ? 'text-pink-400 border-b-2 border-pink-400' : 'text-purple-400'}`}
                   onClick={() => setPaymentMethod('upi')}
                 >
                   UPI
@@ -476,35 +476,35 @@ export default function CheckoutPage() {
             {paymentMethod === 'card' ? (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                  <label className="block text-sm font-medium text-purple-300 mb-1">Card Number</label>
                   <input
                     type="text"
                     value={cardNumber}
                     onChange={(e) => setCardNumber(e.target.value)}
                     placeholder="0000 0000 0000 0000"
-                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                    className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                   />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                    <label className="block text-sm font-medium text-purple-300 mb-1">Expiry Date</label>
                     <input
                       type="text"
                       value={cardExpiry}
                       onChange={(e) => setCardExpiry(e.target.value)}
                       placeholder="MM/YY"
-                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                      className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">CVC</label>
+                    <label className="block text-sm font-medium text-purple-300 mb-1">CVC</label>
                     <input
                       type="text"
                       value={cardCvc}
                       onChange={(e) => setCardCvc(e.target.value)}
                       placeholder="123"
-                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                      className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                     />
                   </div>
                 </div>
@@ -512,11 +512,11 @@ export default function CheckoutPage() {
             ) : (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">UPI ID</label>
+                  <label className="block text-sm font-medium text-purple-300 mb-1">UPI ID</label>
                   <input
                     type="text"
                     placeholder="Enter UPI ID (e.g., yourname@upi)"
-                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                    className="w-full p-3 bg-gray-700 border border-purple-500/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                   />
                 </div>
               </div>
@@ -525,13 +525,13 @@ export default function CheckoutPage() {
             <div className="flex justify-between pt-6">
               <button
                 onClick={prevStep}
-                className="py-3 px-6 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-all duration-200"
+                className="py-3 px-6 border border-purple-500/50 text-purple-200 rounded-lg hover:bg-purple-900/50 transition-all duration-300 transform hover:scale-105"
               >
                 Back
               </button>
               <button
                 onClick={nextStep}
-                className="py-3 px-6 bg-[#F05454] text-white rounded-md hover:bg-[#D64545] transition-all duration-200"
+                className="py-3 px-6 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/30"
               >
                 Review Order
               </button>
@@ -540,25 +540,25 @@ export default function CheckoutPage() {
         );
       case 3: // Review Order
         return (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-bold text-[#F05454] mb-6">Review Your Order</h2>
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl border border-purple-500/30 p-6">
+            <h2 className="text-xl font-bold text-pink-400 mb-6">Review Your Order</h2>
             
             <div className="mb-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Shipping Information</h3>
-              <div className="bg-gray-50 p-4 rounded-md">
-                <p className="text-gray-700">{firstName} {lastName}</p>
-                <p className="text-gray-700">{mobileNumber}</p>
-                <p className="text-gray-700">{shippingAddress}</p>
-                {billingAddress && <p className="text-gray-700">Billing: {billingAddress}</p>}
+              <h3 className="font-semibold text-purple-200 mb-3">Shipping Information</h3>
+              <div className="bg-gray-700/50 p-4 rounded-lg">
+                <p className="text-purple-200">{firstName} {lastName}</p>
+                <p className="text-purple-200">{mobileNumber}</p>
+                <p className="text-purple-200">{shippingAddress}</p>
+                {billingAddress && <p className="text-purple-200">Billing: {billingAddress}</p>}
               </div>
             </div>
             
             <div className="mb-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Payment Method</h3>
-              <div className="bg-gray-50 p-4 rounded-md">
-                <p className="text-gray-700">{paymentMethod === 'card' ? 'Credit/Debit Card' : 'UPI'}</p>
+              <h3 className="font-semibold text-purple-200 mb-3">Payment Method</h3>
+              <div className="bg-gray-700/50 p-4 rounded-lg">
+                <p className="text-purple-200">{paymentMethod === 'card' ? 'Credit/Debit Card' : 'UPI'}</p>
                 {paymentMethod === 'card' && (
-                  <p className="text-gray-700">Card ending in ****{cardNumber.slice(-4)}</p>
+                  <p className="text-purple-200">Card ending in ****{cardNumber.slice(-4)}</p>
                 )}
               </div>
             </div>
@@ -566,17 +566,17 @@ export default function CheckoutPage() {
             <div className="flex justify-between pt-4">
               <button
                 onClick={prevStep}
-                className="py-3 px-6 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-all duration-200"
+                className="py-3 px-6 border border-purple-500/50 text-purple-200 rounded-lg hover:bg-purple-900/50 transition-all duration-300 transform hover:scale-105"
               >
                 Back
               </button>
               <button
                 onClick={handlePlaceOrder}
                 disabled={isProcessing}
-                className={`py-3 px-6 rounded-md transition-all duration-200 ${
+                className={`py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 ${
                   isProcessing 
-                    ? 'bg-gray-400 text-gray-700' 
-                    : 'bg-[#F05454] text-white hover:bg-[#D64545]'
+                    ? 'bg-gray-600 text-gray-400' 
+                    : 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 shadow-lg hover:shadow-pink-500/30'
                 }`}
               >
                 {isProcessing ? 'Processing...' : 'Place Order'}
@@ -590,9 +590,16 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      </div>
+      
       {/* Navigation Bar */}
-      <nav className="bg-white shadow-md sticky top-0 z-50">
+      <nav className="bg-black/30 backdrop-blur-lg sticky top-0 z-50 border-b border-purple-500/30 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -603,22 +610,23 @@ export default function CheckoutPage() {
                   className="h-10 w-10 mr-2"
                 />
               </a>
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500">AWM Store</span>
             </div>
             <div className="hidden md:block flex-grow max-w-2xl mx-10">
               <div className="flex">
-                <select className="border border-gray-300 bg-gray-100 text-gray-700 rounded-l-lg px-4 py-2 hidden md:block">
-                  <option>All Categories</option>
-                  <option>Electronics</option>
-                  <option>Fashion</option>
-                  <option>Home</option>
-                  <option>Health</option>
+                <select className="border border-purple-500/50 bg-gray-800 text-white rounded-l-lg px-4 py-2 hidden md:block">
+                  <option className="text-gray-800">All Categories</option>
+                  <option className="text-gray-800">Electronics</option>
+                  <option className="text-gray-800">Fashion</option>
+                  <option className="text-gray-800">Home</option>
+                  <option className="text-gray-800">Health</option>
                 </select>
                 <input
                   type="text"
                   placeholder="Search products..."
-                  className="w-full p-2 px-4 border border-gray-300 text-gray-700 focus:outline-none"
+                  className="w-full p-2 px-4 border border-purple-500/50 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                 />
-                <button className="bg-[#F05454] text-white px-6 py-2 rounded-r-lg hover:bg-[#D64545] transition-colors">
+                <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-r-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
@@ -627,19 +635,19 @@ export default function CheckoutPage() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-center space-x-6">
-                <a href="/" className="text-gray-700 hover:text-[#F05454] text-sm font-medium">
+                <a href="/" className="text-purple-200 hover:text-pink-400 text-sm font-medium transition-all duration-300 transform hover:scale-105">
                   Home
                 </a>
-                <a href="/shop" className="text-gray-700 hover:text-[#F05454] text-sm font-medium">
+                <a href="/shop" className="text-purple-200 hover:text-pink-400 text-sm font-medium transition-all duration-300 transform hover:scale-105">
                   Shop
                 </a>
-                <a href="/cart" className="text-gray-700 hover:text-[#F05454] text-sm font-medium flex items-center">
+                <a href="/cart" className="text-pink-400 font-medium text-sm border-b-2 border-pink-400 pb-1 transition-all duration-300 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 000 4 2 2 0 000-4zm-8 2a2 2 0 01-4 0 2 2 0 014 0z" />
                   </svg>
                   Cart
                 </a>
-                <a href="/login" className="text-gray-700 hover:text-[#F05454] text-sm font-medium">
+                <a href="/login" className="text-purple-200 hover:text-pink-400 text-sm font-medium transition-all duration-300 transform hover:scale-105">
                   Account
                 </a>
               </div>
@@ -648,41 +656,41 @@ export default function CheckoutPage() {
         </div>
       </nav>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-[#F05454] mb-8">Checkout</h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500 mb-8">Checkout</h1>
         
         {/* Progress Indicator */}
         <div className="flex justify-between items-center mb-8 max-w-2xl mx-auto">
           <div className="flex flex-col items-center">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-[#F05454] text-white' : 'bg-gray-200 text-gray-500'}`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white' : 'bg-gray-700 text-gray-400'}`}>
               1
             </div>
-            <span className={`mt-2 text-sm ${currentStep >= 1 ? 'text-[#F05454] font-medium' : 'text-gray-500'}`}>Shipping</span>
+            <span className={`mt-2 text-sm ${currentStep >= 1 ? 'text-pink-400 font-medium' : 'text-gray-400'}`}>Shipping</span>
           </div>
-          <div className="flex-grow h-1 bg-gray-200 mx-2"></div>
+          <div className="flex-grow h-1 bg-purple-500/50 mx-2"></div>
           <div className="flex flex-col items-center">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-[#F05454] text-white' : 'bg-gray-200 text-gray-500'}`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white' : 'bg-gray-700 text-gray-400'}`}>
               2
             </div>
-            <span className={`mt-2 text-sm ${currentStep >= 2 ? 'text-[#F05454] font-medium' : 'text-gray-500'}`}>Payment</span>
+            <span className={`mt-2 text-sm ${currentStep >= 2 ? 'text-pink-400 font-medium' : 'text-gray-400'}`}>Payment</span>
           </div>
-          <div className="flex-grow h-1 bg-gray-200 mx-2"></div>
+          <div className="flex-grow h-1 bg-purple-500/50 mx-2"></div>
           <div className="flex flex-col items-center">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-[#F05454] text-white' : 'bg-gray-200 text-gray-500'}`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white' : 'bg-gray-700 text-gray-400'}`}>
               3
             </div>
-            <span className={`mt-2 text-sm ${currentStep >= 3 ? 'text-[#F05454] font-medium' : 'text-gray-500'}`}>Review</span>
+            <span className={`mt-2 text-sm ${currentStep >= 3 ? 'text-pink-400 font-medium' : 'text-gray-400'}`}>Review</span>
           </div>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Order Summary - Left Column */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-6 sticky top-24">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl border border-purple-500/30 overflow-hidden mb-6 sticky top-24">
               <div className="p-6">
-                <h2 className="text-xl font-bold text-[#F05454] mb-4">Order Summary</h2>
+                <h2 className="text-xl font-bold text-pink-400 mb-4">Order Summary</h2>
                 
-                <div className="divide-y divide-gray-200">
+                <div className="divide-y divide-purple-500/30">
                   {products.map((product) => {
                     const quantity = cart[product.id] || 0;
                     if (quantity === 0) return null;
@@ -690,7 +698,7 @@ export default function CheckoutPage() {
                     return (
                       <div key={product.id} className="py-4 flex items-center">
                         <div className="flex-shrink-0 mr-4">
-                          <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center overflow-hidden">
+                          <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 border-2 border-dashed border-purple-500/50 rounded-xl w-16 h-16 flex items-center justify-center overflow-hidden">
                             {product.image ? (
                               <img 
                                 src={product.image} 
@@ -702,41 +710,41 @@ export default function CheckoutPage() {
                                 }}
                               />
                             ) : (
-                              <span className="text-gray-500">Image</span>
+                              <span className="text-purple-300">Image</span>
                             )}
                           </div>
                         </div>
                         <div className="flex-grow">
-                          <h3 className="text-lg font-semibold text-[#F05454]">{product.name}</h3>
-                          <p className="text-sm text-gray-500">{product.category}</p>
-                          <p className="text-sm text-gray-600">Qty: {quantity}</p>
+                          <h3 className="text-lg font-bold text-white">{product.name}</h3>
+                          <p className="text-sm text-purple-300">{product.category}</p>
+                          <p className="text-sm text-purple-200">Qty: {quantity}</p>
                         </div>
                         <div className="text-right">
-                          <p className="text-[#F05454] font-bold">${(Number(product.price) * quantity).toFixed(2)}</p>
-                          <p className="text-xs text-gray-500">${Number(product.price).toFixed(2)} × {quantity}</p>
+                          <p className="text-pink-400 font-bold">${(Number(product.price) * quantity).toFixed(2)}</p>
+                          <p className="text-xs text-purple-400">${Number(product.price).toFixed(2)} × {quantity}</p>
                         </div>
                       </div>
                     );
                   })}
                 </div>
                 
-                <div className="pt-4 border-t border-gray-200 mt-4">
+                <div className="pt-4 border-t border-purple-500/30 mt-4">
                   <div className="flex justify-between mb-2">
-                    <span className="text-gray-600">Subtotal</span>
-                    <span className="text-gray-900">${getTotalPrice().toFixed(2)}</span>
+                    <span className="text-purple-300">Subtotal</span>
+                    <span className="text-white">${getTotalPrice().toFixed(2)}</span>
                   </div>
                   
                   <div className="flex justify-between mb-2">
-                    <span className="text-gray-600">Shipping</span>
-                    <span className="text-gray-900">$0.00</span>
+                    <span className="text-purple-300">Shipping</span>
+                    <span className="text-white">$0.00</span>
                   </div>
                   
                   <div className="flex justify-between mb-2">
-                    <span className="text-gray-600">Tax</span>
-                    <span className="text-gray-900">${(getTotalPrice() * 0.08).toFixed(2)}</span>
+                    <span className="text-purple-300">Tax</span>
+                    <span className="text-white">${(getTotalPrice() * 0.08).toFixed(2)}</span>
                   </div>
                   
-                  <div className="flex justify-between text-lg font-bold text-[#F05454] pt-2 border-t border-gray-200">
+                  <div className="flex justify-between text-lg font-bold text-pink-400 pt-2 border-t border-purple-500/30">
                     <span>Total</span>
                     <span>${(getTotalPrice() * 1.08).toFixed(2)}</span>
                   </div>
@@ -754,42 +762,42 @@ export default function CheckoutPage() {
         {/* Related Products Section */}
         {relatedProducts.length > 0 && (
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">You May Also Like</h2>
+            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500 mb-6">You May Also Like</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {relatedProducts.map((product) => (
                 <div 
                   key={product.id} 
-                  className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                  className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-purple-500/30 glowing group"
                   onClick={() => window.location.href = `/product/${product.id}`}
                 >
                   <div className="relative pb-[100%]"> {/* Square aspect ratio */}
-                    <div className="absolute inset-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-900/20 flex items-center justify-center overflow-hidden">
                       {product.image ? (
-                        <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                       ) : (
-                        <span className="text-gray-500">Product Image</span>
+                        <span className="text-purple-300">Product Image</span>
                       )}
                     </div>
                   </div>
                   <div className="p-4">
                     <div className="flex justify-between items-start">
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 truncate group-hover:text-[#F05454]">{product.name}</h3>
-                        <p className="text-xs text-gray-500 mt-1">{product.category}</p>
+                        <h3 className="text-lg font-bold text-white truncate group-hover:text-pink-400 transition-colors duration-300">{product.name}</h3>
+                        <p className="text-xs text-purple-300 mt-1">{product.category}</p>
                       </div>
-                      <span className={`text-xs px-2 py-1 rounded ${
+                      <span className={`text-xs px-2 py-1 rounded-lg ${
                         product.stock > 5 
-                          ? 'bg-green-100 text-green-800' 
+                          ? 'bg-green-900/50 text-green-400' 
                           : product.stock > 0 
-                            ? 'bg-yellow-100 text-yellow-800' 
-                            : 'bg-red-100 text-red-800'
+                            ? 'bg-yellow-900/50 text-yellow-400' 
+                            : 'bg-red-900/50 text-red-400'
                       }`}>
                         {product.stock > 5 ? 'In Stock' : product.stock > 0 ? 'Low Stock' : 'Out of Stock'}
                       </span>
                     </div>
-                    <p className="mt-2 text-sm text-gray-600 line-clamp-2">{product.description}</p>
+                    <p className="mt-2 text-sm text-purple-200 line-clamp-2">{product.description}</p>
                     <div className="mt-4 flex items-center">
-                      <span className="text-lg font-bold text-[#F05454]">${Number(product.price).toFixed(2)}</span>
+                      <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">${Number(product.price).toFixed(2)}</span>
                     </div>
                   </div>
                 </div>

@@ -115,29 +115,34 @@ export default function AdminDashboard() {
   const COLORS = ['#F05454', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      
+      <main className="py-6 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-            <p className="text-gray-600 mt-2">Welcome back, {user?.email}</p>
+          <div className="mb-12 text-center">
+            <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 mb-4">Admin Dashboard</h1>
+            <p className="text-2xl text-purple-200 mt-2">Welcome back, {user?.email}</p>
+            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto mt-4"></div>
           </div>
           
           {/* Metrics Cards */}
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 mb-8">
-            <Card className="bg-white shadow-sm border border-gray-200">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 mb-12">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0 bg-gray-100 rounded-md p-3">
-                    <svg className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-pink-600 to-purple-600 rounded-xl p-4 shadow-lg shadow-pink-500/30">
+                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-600 truncate">Total Revenue</dt>
+                      <dt className="text-sm font-medium text-purple-300 truncate">Total Revenue</dt>
                       <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-[#F05454]">${metrics.totalRevenue.toLocaleString()}</div>
+                        <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400">${metrics.totalRevenue.toLocaleString()}</div>
                       </dd>
                     </dl>
                   </div>
@@ -145,19 +150,19 @@ export default function AdminDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-sm border border-gray-200">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0 bg-gray-100 rounded-md p-3">
-                    <svg className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl p-4 shadow-lg shadow-cyan-500/30">
+                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-600 truncate">Total Orders</dt>
+                      <dt className="text-sm font-medium text-purple-300 truncate">Total Orders</dt>
                       <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-[#F05454]">{metrics.totalOrders}</div>
+                        <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{metrics.totalOrders}</div>
                       </dd>
                     </dl>
                   </div>
@@ -165,19 +170,19 @@ export default function AdminDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-sm border border-gray-200">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0 bg-gray-100 rounded-md p-3">
-                    <svg className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-green-600 to-teal-600 rounded-xl p-4 shadow-lg shadow-teal-500/30">
+                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-600 truncate">Total Agents</dt>
+                      <dt className="text-sm font-medium text-purple-300 truncate">Total Agents</dt>
                       <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-[#F05454]">{metrics.totalAgents}</div>
+                        <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">{metrics.totalAgents}</div>
                       </dd>
                     </dl>
                   </div>
@@ -185,19 +190,19 @@ export default function AdminDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-sm border border-gray-200">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0 bg-gray-100 rounded-md p-3">
-                    <svg className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-yellow-600 to-orange-600 rounded-xl p-4 shadow-lg shadow-orange-500/30">
+                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-600 truncate">Total Customers</dt>
+                      <dt className="text-sm font-medium text-purple-300 truncate">Total Customers</dt>
                       <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-[#F05454]">{metrics.totalCustomers}</div>
+                        <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">{metrics.totalCustomers}</div>
                       </dd>
                     </dl>
                   </div>
@@ -205,19 +210,19 @@ export default function AdminDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-sm border border-gray-200">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0 bg-gray-100 rounded-md p-3">
-                    <svg className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-red-600 to-pink-600 rounded-xl p-4 shadow-lg shadow-pink-500/30">
+                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-600 truncate">Pending Payouts</dt>
+                      <dt className="text-sm font-medium text-purple-300 truncate">Pending Payouts</dt>
                       <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-[#F05454]">{metrics.pendingPayouts}</div>
+                        <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-400">{metrics.pendingPayouts}</div>
                       </dd>
                     </dl>
                   </div>
@@ -227,27 +232,33 @@ export default function AdminDashboard() {
           </div>
 
           {/* Charts Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Daily Sales Chart */}
-            <Card className="bg-white shadow-sm border border-gray-200">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 floating transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <CardHeader>
-                <CardTitle className="text-lg text-gray-900">Daily Sales</CardTitle>
+                <CardTitle className="text-xl font-bold text-purple-200">Daily Sales</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={dailySales}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                      <XAxis dataKey="date" stroke="#6b7280" />
-                      <YAxis stroke="#6b7280" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#4c1d95" />
+                      <XAxis dataKey="date" stroke="#c084fc" />
+                      <YAxis stroke="#c084fc" />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151', borderRadius: '0.5rem' }} 
-                        itemStyle={{ color: '#374151' }}
+                        contentStyle={{ backgroundColor: '#1f2937', borderColor: '#8b5cf6', color: '#f3e8ff', borderRadius: '0.5rem' }} 
+                        itemStyle={{ color: '#f3e8ff' }}
                         formatter={(value) => [`$${value}`, 'Sales']}
                         labelFormatter={(label) => `Date: ${label}`}
                       />
                       <Legend />
-                      <Bar dataKey="sales" fill="#F05454" name="Sales ($)" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="sales" fill="url(#gradientColor)" name="Sales ($)" radius={[4, 4, 0, 0]} />
+                      <defs>
+                        <linearGradient id="gradientColor" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#ec4899" />
+                          <stop offset="95%" stopColor="#f43f5e" />
+                        </linearGradient>
+                      </defs>
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -255,25 +266,31 @@ export default function AdminDashboard() {
             </Card>
 
             {/* Monthly Revenue Chart */}
-            <Card className="bg-white shadow-sm border border-gray-200">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 floating transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <CardHeader>
-                <CardTitle className="text-lg text-gray-900">Monthly Revenue</CardTitle>
+                <CardTitle className="text-xl font-bold text-purple-200">Monthly Revenue</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={monthlyRevenue}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                      <XAxis dataKey="month" stroke="#6b7280" />
-                      <YAxis stroke="#6b7280" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#4c1d95" />
+                      <XAxis dataKey="month" stroke="#c084fc" />
+                      <YAxis stroke="#c084fc" />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151', borderRadius: '0.5rem' }} 
-                        itemStyle={{ color: '#374151' }}
+                        contentStyle={{ backgroundColor: '#1f2937', borderColor: '#8b5cf6', color: '#f3e8ff', borderRadius: '0.5rem' }} 
+                        itemStyle={{ color: '#f3e8ff' }}
                         formatter={(value) => [`$${value}`, 'Revenue']}
                         labelFormatter={(label) => `Month: ${label}`}
                       />
                       <Legend />
-                      <Bar dataKey="revenue" fill="#00C49F" name="Revenue ($)" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="revenue" fill="url(#gradientColor2)" name="Revenue ($)" radius={[4, 4, 0, 0]} />
+                      <defs>
+                        <linearGradient id="gradientColor2" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#10b981" />
+                          <stop offset="95%" stopColor="#06b6d4" />
+                        </linearGradient>
+                      </defs>
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -282,9 +299,9 @@ export default function AdminDashboard() {
           </div>
 
           {/* Top Agents Chart */}
-          <Card className="bg-white shadow-sm border border-gray-200 mb-8">
+          <Card className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl border border-purple-500/30 floating transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 mb-12">
             <CardHeader>
-              <CardTitle className="text-lg text-gray-900">Top Performing Agents</CardTitle>
+              <CardTitle className="text-xl font-bold text-purple-200">Top Performing Agents</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="h-80">
@@ -296,7 +313,6 @@ export default function AdminDashboard() {
                       cy="50%"
                       labelLine={true}
                       outerRadius={80}
-                      fill="#8884d8"
                       dataKey="sales"
                       nameKey="name"
                       label={({ name, percent = 0 }) => name ? `${name}: ${(percent * 100).toFixed(0)}%` : ''}
@@ -306,8 +322,8 @@ export default function AdminDashboard() {
                       ))}
                     </Pie>
                     <Tooltip 
-                      contentStyle={{ backgroundColor: 'white', borderColor: '#e5e7eb', color: '#374151', borderRadius: '0.5rem' }} 
-                      itemStyle={{ color: '#374151' }}
+                      contentStyle={{ backgroundColor: '#1f2937', borderColor: '#8b5cf6', color: '#f3e8ff', borderRadius: '0.5rem' }} 
+                      itemStyle={{ color: '#f3e8ff' }}
                       formatter={(value) => [`$${value}`, 'Sales']}
                     />
                     <Legend />

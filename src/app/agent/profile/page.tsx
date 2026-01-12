@@ -85,24 +85,31 @@ export default function AgentProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="text-lg text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 relative z-10">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">My Profile</h2>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      
+      <div className="mb-8 relative z-10">
+        <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">My Profile</h2>
       </div>
 
-      <div className="bg-white shadow overflow-hidden sm:rounded-md p-6">
+      <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl overflow-hidden sm:rounded-2xl p-8 border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 relative z-10">
         {editMode ? (
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="firstName" className="block text-sm font-bold text-purple-300 mb-2">
                   First Name
                 </label>
                 <input
@@ -112,12 +119,12 @@ export default function AgentProfilePage() {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 />
               </div>
 
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="lastName" className="block text-sm font-bold text-purple-300 mb-2">
                   Last Name
                 </label>
                 <input
@@ -127,12 +134,12 @@ export default function AgentProfilePage() {
                   value={formData.lastName}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-bold text-purple-300 mb-2">
                   Email
                 </label>
                 <input
@@ -142,12 +149,12 @@ export default function AgentProfilePage() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 />
               </div>
 
               <div>
-                <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="mobileNumber" className="block text-sm font-bold text-purple-300 mb-2">
                   Mobile Number
                 </label>
                 <input
@@ -156,12 +163,12 @@ export default function AgentProfilePage() {
                   id="mobileNumber"
                   value={formData.mobileNumber}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label htmlFor="bankDetails" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="bankDetails" className="block text-sm font-bold text-purple-300 mb-2">
                   Bank Details
                 </label>
                 <input
@@ -170,15 +177,15 @@ export default function AgentProfilePage() {
                   id="bankDetails"
                   value={formData.bankDetails}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 />
               </div>
             </div>
 
-            <div className="mt-6 flex space-x-3">
+            <div className="mt-8 flex space-x-4">
               <button
                 type="submit"
-                className="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                className="px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl hover:from-green-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500/50 shadow-lg shadow-green-500/30 transition-all duration-300 transform hover:scale-105"
               >
                 Save Changes
               </button>
@@ -194,7 +201,7 @@ export default function AgentProfilePage() {
                     bankDetails: user?.bankDetails || ''
                   });
                 }}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                className="px-6 py-3 text-sm font-bold text-purple-300 bg-gradient-to-r from-gray-700 to-gray-800 rounded-xl hover:from-gray-600 hover:to-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300"
               >
                 Cancel
               </button>
@@ -202,36 +209,36 @@ export default function AgentProfilePage() {
           </form>
         ) : (
           <div>
-            <div className="border-b border-gray-200 pb-4">
-              <h3 className="text-lg font-medium text-gray-900">Personal Information</h3>
+            <div className="border-b border-purple-500/30 pb-4">
+              <h3 className="text-xl font-bold text-purple-200">Personal Information</h3>
             </div>
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium text-gray-700">First Name</label>
-                <div className="mt-1 text-sm text-gray-900">{user?.firstName || 'Not provided'}</div>
+                <label className="block text-sm font-bold text-purple-300">First Name</label>
+                <div className="mt-2 text-sm font-bold text-white">{user?.firstName || 'Not provided'}</div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Last Name</label>
-                <div className="mt-1 text-sm text-gray-900">{user?.lastName || 'Not provided'}</div>
+                <label className="block text-sm font-bold text-purple-300">Last Name</label>
+                <div className="mt-2 text-sm font-bold text-white">{user?.lastName || 'Not provided'}</div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Email</label>
-                <div className="mt-1 text-sm text-gray-900">{user?.email}</div>
+                <label className="block text-sm font-bold text-purple-300">Email</label>
+                <div className="mt-2 text-sm font-bold text-white">{user?.email}</div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
-                <div className="mt-1 text-sm text-gray-900">{user?.mobileNumber || 'Not provided'}</div>
+                <label className="block text-sm font-bold text-purple-300">Mobile Number</label>
+                <div className="mt-2 text-sm font-bold text-white">{user?.mobileNumber || 'Not provided'}</div>
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium text-gray-700">Bank Details</label>
-                <div className="mt-1 text-sm text-gray-900">{user?.bankDetails || 'Not provided'}</div>
+                <label className="block text-sm font-bold text-purple-300">Bank Details</label>
+                <div className="mt-2 text-sm font-bold text-white">{user?.bankDetails || 'Not provided'}</div>
               </div>
             </div>
             
-            <div className="mt-6">
+            <div className="mt-8">
               <button
                 onClick={() => setEditMode(true)}
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl hover:from-pink-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-pink-500/50 shadow-lg shadow-pink-500/30 transition-all duration-300 transform hover:scale-105"
               >
                 Edit Profile
               </button>

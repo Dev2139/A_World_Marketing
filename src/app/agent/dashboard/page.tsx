@@ -140,63 +140,71 @@ export default function AgentDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Agent Dashboard</h1>
-          <p className="text-gray-600 mt-2">Welcome back, {user?.email}</p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-6 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-12 text-center">
+          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 mb-4">Agent Dashboard</h1>
+          <p className="text-2xl text-purple-200 mt-2">Welcome back, {user?.email}</p>
+          <div className="h-1 w-32 bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto mt-4"></div>
         </div>
 
         {/* Metrics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <h3 className="text-lg font-medium text-gray-600">Total Referrals</h3>
-            <p className="mt-2 text-3xl font-semibold text-[#F05454]">{metrics.totalReferrals}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <h3 className="text-lg font-bold text-purple-300">Total Referrals</h3>
+            <p className="mt-2 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400">{metrics.totalReferrals}</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <h3 className="text-lg font-medium text-gray-600">Total Commission</h3>
-            <p className="mt-2 text-3xl font-semibold text-[#F05454]">${metrics.totalCommission.toFixed(2)}</p>
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <h3 className="text-lg font-bold text-purple-300">Total Commission</h3>
+            <p className="mt-2 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400">${metrics.totalCommission.toFixed(2)}</p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <h3 className="text-lg font-medium text-gray-600">Pending Payouts</h3>
-            <p className="mt-2 text-3xl font-semibold text-[#F05454]">{metrics.pendingPayouts}</p>
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <h3 className="text-lg font-bold text-purple-300">Pending Payouts</h3>
+            <p className="mt-2 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400">{metrics.pendingPayouts}</p>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <h3 className="text-lg font-medium text-gray-600">Total Earnings</h3>
-            <p className="mt-2 text-3xl font-semibold text-[#F05454]">${metrics.totalEarnings.toFixed(2)}</p>
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <h3 className="text-lg font-bold text-purple-300">Total Earnings</h3>
+            <p className="mt-2 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400">${metrics.totalEarnings.toFixed(2)}</p>
           </div>
         </div>
 
         {/* Referral Section */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Your Referral Link</h3>
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-2xl border border-purple-500/30 mb-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+          <h3 className="text-xl font-bold text-purple-200 mb-4">Your Referral Link</h3>
           <div className="flex items-center">
             <input
               type="text"
               value={metrics.activeReferralLink}
               readOnly
-              className="flex-grow border border-gray-300 text-gray-700 bg-white rounded-l-md px-4 py-2"
+              className="flex-grow border-2 border-purple-500/50 bg-gray-700 text-white rounded-l-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500/50 bg-gradient-to-r from-purple-900/30 to-pink-900/30"
             />
             <button
               onClick={handleCopyReferralLink}
-              className="bg-[#F05454] text-white px-4 py-2 rounded-r-md hover:bg-[#D64545] transition-all duration-200"
+              className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-3 rounded-r-xl hover:from-pink-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-pink-500/30 font-medium"
             >
               Copy
             </button>
           </div>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-3 text-sm text-purple-300">
             Share this link with customers to earn commissions on their purchases
           </p>
         </div>
 
         {/* Payout Request Section */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Request Payout</h3>
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-2xl border border-purple-500/30 mb-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+          <h3 className="text-xl font-bold text-purple-200 mb-4">Request Payout</h3>
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-grow">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Payout Amount ($)</label>
+              <label className="block text-sm font-medium text-purple-300 mb-1">Payout Amount ($)</label>
               <input
                 type="number"
                 value={payoutAmount}
@@ -204,9 +212,9 @@ export default function AgentDashboardPage() {
                 min="0"
                 step="0.01"
                 placeholder="Enter amount"
-                className="w-full p-3 bg-white border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F05454]"
+                className="w-full p-3 bg-gray-700 border-2 border-purple-500/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50 bg-gradient-to-r from-purple-900/30 to-pink-900/30"
               />
-              <p className="mt-1 text-sm text-gray-600">
+              <p className="mt-2 text-sm text-purple-400">
                 Available for payout: ${metrics.totalCommission.toFixed(2)}
               </p>
             </div>
@@ -214,10 +222,10 @@ export default function AgentDashboardPage() {
               <button
                 onClick={handleRequestPayout}
                 disabled={isPayoutRequesting}
-                className={`w-full sm:w-auto px-6 py-3 rounded-md transition-all duration-200 ${
+                className={`w-full sm:w-auto px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 font-medium ${
                   isPayoutRequesting
-                    ? 'bg-gray-400 text-gray-700'
-                    : 'bg-[#F05454] text-white hover:bg-[#D64545]'
+                    ? 'bg-gray-600 text-gray-400'
+                    : 'bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 shadow-lg hover:shadow-pink-500/30'
                 }`}
               >
                 {isPayoutRequesting ? 'Processing...' : 'Request Payout'}
@@ -227,9 +235,9 @@ export default function AgentDashboardPage() {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Activity</h3>
-          <p className="text-gray-600">Your recent referrals and commissions will appear here</p>
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-2xl border border-purple-500/30 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+          <h3 className="text-xl font-bold text-purple-200 mb-4">Recent Activity</h3>
+          <p className="text-purple-300 text-lg">Your recent referrals and commissions will appear here</p>
         </div>
       </div>
     </div>

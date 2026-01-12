@@ -246,25 +246,32 @@ export default function OrdersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-dark-main flex items-center justify-center">
-        <div className="text-lg text-dark-text">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="text-lg text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 relative z-10">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      
+      <main className="py-6 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Orders Management</h2>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">Orders Management</h2>
           </div>
 
           {/* Filters */}
-          <div className="bg-white shadow-lg rounded-lg p-4 mb-6 border border-gray-200">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl rounded-2xl p-6 mb-8 border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="status" className="block text-sm font-bold text-purple-300 mb-2">
                   Status
                 </label>
                 <select
@@ -272,7 +279,7 @@ export default function OrdersPage() {
                   name="status"
                   value={filters.status}
                   onChange={handleFilterChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 >
                   <option value="">All Statuses</option>
                   <option value="PENDING">Pending</option>
@@ -284,7 +291,7 @@ export default function OrdersPage() {
               </div>
               
               <div>
-                <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="date" className="block text-sm font-bold text-purple-300 mb-2">
                   Date
                 </label>
                 <input
@@ -293,12 +300,12 @@ export default function OrdersPage() {
                   name="date"
                   value={filters.date}
                   onChange={handleFilterChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 />
               </div>
               
               <div>
-                <label htmlFor="agent" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="agent" className="block text-sm font-bold text-purple-300 mb-2">
                   Agent
                 </label>
                 <select
@@ -306,7 +313,7 @@ export default function OrdersPage() {
                   name="agent"
                   value={filters.agent}
                   onChange={handleFilterChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 >
                   <option value="">All Agents</option>
                   {/* Agents will be populated dynamically */}
@@ -315,98 +322,98 @@ export default function OrdersPage() {
             </div>
           </div>
 
-          <div className="bg-white shadow-lg overflow-hidden sm:rounded-md border border-gray-200">
-            <ul className="divide-y divide-gray-200">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl overflow-hidden sm:rounded-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <ul className="divide-y divide-purple-500/30">
               {filteredOrders.map((order) => (
-                <li key={order.id}>
-                  <div className="px-4 py-4 sm:px-6">
+                <li key={order.id} className="transition-all duration-300 hover:bg-gray-700/30">
+                  <div className="px-6 py-6 sm:px-8">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <p className="text-sm font-medium text-gray-900 truncate">
+                        <p className="text-sm font-bold text-white truncate">
                           Order #{order.id.substring(0, 8)}
                         </p>
-                        <div className="ml-2 inline-flex items-center">
+                        <div className="ml-4 inline-flex items-center">
                           {order.status === 'PENDING' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg shadow-yellow-500/20">
                               Pending
                             </span>
                           )}
                           {order.status === 'CONFIRMED' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20">
                               Confirmed
                             </span>
                           )}
                           {order.status === 'SHIPPED' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/20">
                               Shipped
                             </span>
                           )}
                           {order.status === 'DELIVERED' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/20">
                               Delivered
                             </span>
                           )}
                           {order.status === 'CANCELLED' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg shadow-red-500/20">
                               Cancelled
                             </span>
                           )}
                         </div>
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-purple-300">
                         <p>Total: ${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : order.totalPrice?.toFixed(2) || 'N/A'}</p>
                       </div>
                     </div>
                     
-                    <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
                       {/* Customer Information */}
-                      <div className="border border-gray-200 rounded-md p-3">
-                        <h4 className="font-medium text-gray-900 mb-2">Customer Info</h4>
-                        <p className="text-sm text-gray-500">Name: {order.customer?.firstName} {order.customer?.lastName}</p>
-                        <p className="text-sm text-gray-500">Email: {order.customer?.email}</p>
-                        <p className="text-sm text-gray-500">Phone: {order.customer?.phone}</p>
-                        <p className="text-sm text-gray-500">Address: {order.customer?.shippingAddress || 'N/A'}</p>
+                      <div className="bg-gray-700/50 border border-purple-500/30 rounded-xl p-4">
+                        <h4 className="font-bold text-purple-200 mb-3">Customer Info</h4>
+                        <p className="text-sm text-purple-300">Name: {order.customer?.firstName} {order.customer?.lastName}</p>
+                        <p className="text-sm text-purple-300">Email: {order.customer?.email}</p>
+                        <p className="text-sm text-purple-300">Phone: {order.customer?.phone}</p>
+                        <p className="text-sm text-purple-300">Address: {order.customer?.shippingAddress || 'N/A'}</p>
                       </div>
                       
                       {/* Payment Information */}
-                      <div className="border border-gray-200 rounded-md p-3">
-                        <h4 className="font-medium text-gray-900 mb-2">Payment Info</h4>
-                        <p className="text-sm text-gray-500">Method: {order.paymentMethod || 'N/A'}</p>
+                      <div className="bg-gray-700/50 border border-purple-500/30 rounded-xl p-4">
+                        <h4 className="font-bold text-purple-200 mb-3">Payment Info</h4>
+                        <p className="text-sm text-purple-300">Method: {order.paymentMethod || 'N/A'}</p>
                         {order.paymentMethod === 'card' && (
                           <>
-                            <p className="text-sm text-gray-500">Card: ****{order.paymentDetails?.cardNumber?.slice(-4) || '****'}</p>
-                            <p className="text-sm text-gray-500">Expiry: {order.paymentDetails?.expiryDate || 'N/A'}</p>
+                            <p className="text-sm text-purple-300">Card: ****{order.paymentDetails?.cardNumber?.slice(-4) || '****'}</p>
+                            <p className="text-sm text-purple-300">Expiry: {order.paymentDetails?.expiryDate || 'N/A'}</p>
                           </>
                         )}
                         {order.paymentMethod === 'bank' && (
                           <>
-                            <p className="text-sm text-gray-500">Account: {order.paymentDetails?.accountNumber || '****'}</p>
-                            <p className="text-sm text-gray-500">Routing: {order.paymentDetails?.routingNumber || '****'}</p>
+                            <p className="text-sm text-purple-300">Account: {order.paymentDetails?.accountNumber || '****'}</p>
+                            <p className="text-sm text-purple-300">Routing: {order.paymentDetails?.routingNumber || '****'}</p>
                           </>
                         )}
                       </div>
                       
                       {/* Order Totals */}
-                      <div className="border border-gray-200 rounded-md p-3">
-                        <h4 className="font-medium text-gray-900 mb-2">Order Summary</h4>
-                        <p className="text-sm text-gray-500">Subtotal: ${order.subtotal?.toFixed(2) || 'N/A'}</p>
-                        <p className="text-sm text-gray-500">Tax: ${order.tax?.toFixed(2) || 'N/A'}</p>
-                        <p className="text-sm text-gray-500">Shipping: ${order.shipping?.toFixed(2) || '0.00'}</p>
-                        <p className="text-sm text-gray-500 font-medium">Total: ${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : order.totalPrice?.toFixed(2) || 'N/A'}</p>
+                      <div className="bg-gray-700/50 border border-purple-500/30 rounded-xl p-4">
+                        <h4 className="font-bold text-purple-200 mb-3">Order Summary</h4>
+                        <p className="text-sm text-purple-300">Subtotal: ${order.subtotal?.toFixed(2) || 'N/A'}</p>
+                        <p className="text-sm text-purple-300">Tax: ${order.tax?.toFixed(2) || 'N/A'}</p>
+                        <p className="text-sm text-purple-300">Shipping: ${order.shipping?.toFixed(2) || '0.00'}</p>
+                        <p className="text-sm text-purple-300 font-bold">Total: ${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : order.totalPrice?.toFixed(2) || 'N/A'}</p>
                       </div>
                     </div>
                     
                     {/* Products List */}
-                    <div className="mt-4">
-                      <h4 className="font-medium text-gray-900 mb-2">Products</h4>
-                      <div className="space-y-2">
+                    <div className="mt-6">
+                      <h4 className="font-bold text-purple-200 mb-3">Products</h4>
+                      <div className="space-y-3">
                         {(order.items || []).map((item: any, index: number) => (
-                          <div key={index} className="flex items-center text-sm text-gray-500 border-b border-gray-200 pb-1">
+                          <div key={index} className="flex items-center text-sm text-purple-300 border-b border-purple-500/30 pb-3">
                             <div className="flex items-center">
                               <img 
                                 src={item.image || item.product?.image || item.product?.imageUrl || 'https://via.placeholder.com/40x40'} 
                                 alt={item.name || item.product?.name || 'Product'}
-                                className="w-10 h-10 object-cover rounded mr-3"
+                                className="w-12 h-12 object-cover rounded-lg mr-4"
                                 onError={(e) => {
                                   const target = e.target as HTMLImageElement;
                                   target.src = 'https://via.placeholder.com/40x40';
@@ -414,23 +421,23 @@ export default function OrdersPage() {
                               />
                               <span>{item.name || item.product?.name} (x{item.quantity})</span>
                             </div>
-                            <span>${Number(item.price || item.product?.price)?.toFixed(2) || 'N/A'}</span>
+                            <span className="font-bold">${Number(item.price || item.product?.price)?.toFixed(2) || 'N/A'}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                     
-                    <div className="mt-2 sm:flex sm:justify-between pt-2 border-t border-gray-200">
+                    <div className="mt-4 sm:flex sm:justify-between pt-4 border-t border-purple-500/30">
                       <div className="sm:flex">
-                        <p className="flex items-center text-sm text-gray-500">
+                        <p className="flex items-center text-sm text-purple-300">
                           Agent: {order.agent?.email || 'None'}
                         </p>
                       </div>
-                      <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 space-x-4">
+                      <div className="mt-3 flex items-center text-sm text-purple-300 sm:mt-0 space-x-4">
                         <div className="flex space-x-3">
                           <button 
                             onClick={() => downloadInvoice(order)}
-                            className="text-sm text-[#F05454] hover:text-[#D64545] font-medium"
+                            className="text-sm text-pink-400 hover:text-pink-300 font-bold"
                             title="View and Print Invoice"
                           >
                             View Invoice
@@ -442,7 +449,7 @@ export default function OrdersPage() {
                               value={order.status}
                               onChange={(e) => updateOrderStatus(order.id, e.target.value)}
                               disabled={updatingOrderId === order.id}
-                              className="ml-2 text-sm border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454]"
+                              className="ml-2 text-sm border-2 border-purple-500/50 bg-gray-700 text-white rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-500/50 bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                             >
                               <option value="PENDING">Pending</option>
                               <option value="CONFIRMED">Confirmed</option>
@@ -451,11 +458,11 @@ export default function OrdersPage() {
                               <option value="CANCELLED">Cancelled</option>
                             </select>
                             {updatingOrderId === order.id && (
-                              <span className="ml-2 text-xs text-gray-500">Updating...</span>
+                              <span className="ml-2 text-xs text-purple-400">Updating...</span>
                             )}
                           </div>
                         </div>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-sm text-purple-400">
                           {new Date(order.createdAt).toLocaleString()}
                         </span>
                       </div>

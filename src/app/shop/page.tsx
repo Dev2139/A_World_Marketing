@@ -20,6 +20,7 @@ export default function ShoppingPage() {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<{[key: string]: number}>({});
   const [referralAgent, setReferralAgent] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const predefinedCategories = [
     'All',
     'Electronics',
@@ -424,12 +425,17 @@ export default function ShoppingPage() {
     );
   }
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      </div>
+      
       {/* Navigation Bar */}
-      <nav className="bg-white shadow-md sticky top-0 z-50">
+      <nav className="bg-black/30 backdrop-blur-lg sticky top-0 z-50 border-b border-purple-500/30 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -440,13 +446,14 @@ export default function ShoppingPage() {
                   className="h-10 w-10 mr-2"
                 />
               </a>
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500">AWM Store</span>
             </div>
             <div className="hidden md:block flex-grow max-w-2xl mx-10">
               <div className="flex">
-                <select className="border border-gray-300 bg-gray-100 text-gray-700 rounded-l-lg px-4 py-2 hidden md:block">
-                  <option>All Categories</option>
+                <select className="border border-purple-500/50 bg-gray-800 text-white rounded-l-lg px-4 py-2 hidden md:block">
+                  <option className="text-gray-800">All Categories</option>
                   {predefinedCategories.slice(1).map((cat) => (
-                    <option key={cat}>{cat}</option>
+                    <option key={cat} className="text-gray-800">{cat}</option>
                   ))}
                 </select>
                 <input
@@ -454,9 +461,9 @@ export default function ShoppingPage() {
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full p-2 px-4 border border-gray-300 text-gray-700 focus:outline-none"
+                  className="w-full p-2 px-4 border border-purple-500/50 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                 />
-                <button className="bg-[#F05454] text-white px-6 py-2 rounded-r-lg hover:bg-[#D64545] transition-colors">
+                <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-r-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
@@ -465,19 +472,24 @@ export default function ShoppingPage() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-center space-x-6">
-                <a href="/" className="text-gray-700 hover:text-[#F05454] text-sm font-medium">
+                <a href="/" className="text-purple-200 hover:text-pink-400 text-sm font-medium transition-all duration-300 transform hover:scale-105">
                   Home
                 </a>
-                <a href="/shop" className="text-gray-700 hover:text-[#F05454] text-sm font-medium">
+                <a href="/shop" className="text-pink-400 font-medium text-sm border-b-2 border-pink-400 pb-1 transition-all duration-300">
                   Shop
                 </a>
-                <a href="/cart" className="text-gray-700 hover:text-[#F05454] text-sm font-medium flex items-center">
+                <a href="/cart" className="text-purple-200 hover:text-pink-400 text-sm font-medium flex items-center transition-all duration-300 transform hover:scale-105 relative">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 000 4 2 2 0 000-4zm-8 2a2 2 0 01-4 0 2 2 0 014 0z" />
                   </svg>
                   Cart ({getTotalItems()})
+                  {getTotalItems() > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                      {getTotalItems()}
+                    </span>
+                  )}
                 </a>
-                <a href="/login" className="text-gray-700 hover:text-[#F05454] text-sm font-medium">
+                <a href="/login" className="text-purple-200 hover:text-pink-400 text-sm font-medium transition-all duration-300 transform hover:scale-105">
                   Account
                 </a>
               </div>
@@ -487,7 +499,7 @@ export default function ShoppingPage() {
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-gray-700 hover:text-[#F05454]"
+                className="text-purple-200 hover:text-pink-400"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -499,34 +511,34 @@ export default function ShoppingPage() {
         
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="md:hidden bg-black/80 backdrop-blur-lg border-t border-purple-500/50">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <a href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#F05454] hover:bg-gray-50">
+              <a href="/" className="block px-3 py-2 rounded-md text-base font-medium text-purple-200 hover:text-pink-400 hover:bg-purple-900/50 transition-all duration-300">
                 Home
               </a>
-              <a href="/shop" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#F05454] hover:bg-gray-50">
+              <a href="/shop" className="block px-3 py-2 rounded-md text-base font-medium text-pink-400 font-medium border-b-2 border-pink-400 pb-1 transition-all duration-300">
                 Shop
               </a>
-              <a href="/cart" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#F05454] hover:bg-gray-50 flex items-center">
+              <a href="/cart" className="block px-3 py-2 rounded-md text-base font-medium text-purple-200 hover:text-pink-400 hover:bg-purple-900/50 flex items-center transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 000 4 2 2 0 000-4zm-8 2a2 2 0 01-4 0 2 2 0 014 0z" />
                 </svg>
                 Cart ({getTotalItems()})
               </a>
-              <a href="/login" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#F05454] hover:bg-gray-50">
+              <a href="/login" className="block px-3 py-2 rounded-md text-base font-medium text-purple-200 hover:text-pink-400 hover:bg-purple-900/50 transition-all duration-300">
                 Account
               </a>
             </div>
-            <div className="px-4 py-3 border-t border-gray-200">
+            <div className="px-4 py-3 border-t border-purple-500/50">
               <div className="flex">
                 <input
                   type="text"
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 p-2 border border-gray-300 rounded-l text-sm"
+                  className="flex-1 p-2 border border-purple-500/50 bg-gray-800 text-white rounded-l text-sm focus:outline-none focus:ring-2 focus:ring-pink-500/50"
                 />
-                <button className="bg-[#F05454] text-white px-4 py-2 rounded-r text-sm">
+                <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-2 rounded-r text-sm hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
@@ -539,51 +551,51 @@ export default function ShoppingPage() {
 
       {/* Referral Banner */}
       {referralAgent && (
-        <div className="bg-blue-50 border-b border-blue-200 p-3">
+        <div className="bg-gradient-to-r from-purple-900/80 to-pink-900/80 border-b border-purple-500/50 p-3 backdrop-blur-sm relative z-10">
           <div className="max-w-7xl mx-auto flex items-center">
-            <div className="mr-3 text-blue-500">
+            <div className="mr-3 text-pink-400">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div>
-              <p className="text-sm text-gray-700">
-                You're shopping through <span className="font-semibold text-[#F05454]">{referralAgent}</span>'s referral link
+              <p className="text-sm text-purple-200">
+                You're shopping through <span className="font-semibold text-pink-400">{referralAgent}</span>'s referral link
               </p>
-              <p className="text-xs text-gray-600">Any purchase will credit to their account</p>
+              <p className="text-xs text-purple-300">Any purchase will credit to their account</p>
             </div>
           </div>
         </div>
       )}
       
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-r from-[#f8f9fa] to-[#e9ecef]">
+      <section className="py-12 bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 mb-4">
                 Discover Amazing Products
               </h1>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-purple-200 mb-8">
                 Find everything you need at unbeatable prices. Quality products with exceptional service.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a 
                   href="#products" 
-                  className="px-6 py-3 bg-[#F05454] text-white rounded-lg hover:bg-[#D64545] transition-colors font-medium"
+                  className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 font-medium transform hover:scale-105 shadow-lg hover:shadow-pink-500/30"
                 >
                   Shop Now
                 </a>
                 <a 
                   href="#categories" 
-                  className="px-6 py-3 bg-white text-[#F05454] border border-[#F05454] rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                  className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 font-medium transform hover:scale-105 shadow-lg hover:shadow-indigo-500/30"
                 >
                   View Categories
                 </a>
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 md:h-80 flex items-center justify-center text-gray-500">
+              <div className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 border-2 border-dashed border-purple-500/50 rounded-xl w-full h-64 md:h-80 flex items-center justify-center text-purple-300 neon-border glowing">
                 Banner Image
               </div>
             </div>
@@ -594,25 +606,25 @@ export default function ShoppingPage() {
 
 
       {/* Products Section */}
-      <div className="py-12 w-full">
+      <div className="py-12 w-full relative z-10">
         <div className="flex flex-col lg:flex-row gap-0">
           {/* Sidebar - Filters */}
-          <div className="lg:w-1/4 bg-gray-50 p-4">
-            <div className="bg-white rounded-lg shadow-sm p-6 sticky top-24 h-full">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
+          <div className="lg:w-1/4 p-4">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 sticky top-24 h-full border border-purple-500/30 glowing">
+              <h2 className="text-lg font-semibold text-purple-200 mb-4">Filters</h2>
               
               {/* Categories Filter */}
               <div className="mb-6">
-                <h3 className="font-medium text-gray-900 mb-3">Categories</h3>
+                <h3 className="font-medium text-purple-300 mb-3">Categories</h3>
                 <div className="space-y-2">
                   {predefinedCategories.slice(1).map((category) => (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`block w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                      className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-all duration-300 ${
                         selectedCategory === category
-                          ? 'bg-[#F05454] text-white'
-                          : 'text-gray-700 hover:bg-gray-100'
+                          ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white transform scale-105'
+                          : 'text-purple-200 hover:bg-purple-900/50 hover:text-pink-400'
                       }`}
                     >
                       {category}
@@ -623,21 +635,21 @@ export default function ShoppingPage() {
               
               {/* Price Range Filter */}
               <div className="mb-6">
-                <h3 className="font-medium text-gray-900 mb-3">Price Range</h3>
+                <h3 className="font-medium text-purple-300 mb-3">Price Range</h3>
                 <div className="space-y-2">
-                  <button className="block w-full text-left px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">Under $50</button>
-                  <button className="block w-full text-left px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">$50 - $100</button>
-                  <button className="block w-full text-left px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">$100 - $200</button>
-                  <button className="block w-full text-left px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">Over $200</button>
+                  <button className="block w-full text-left px-3 py-2 rounded-lg text-sm text-purple-200 hover:bg-purple-900/50 hover:text-pink-400 transition-all duration-300">Under $50</button>
+                  <button className="block w-full text-left px-3 py-2 rounded-lg text-sm text-purple-200 hover:bg-purple-900/50 hover:text-pink-400 transition-all duration-300">$50 - $100</button>
+                  <button className="block w-full text-left px-3 py-2 rounded-lg text-sm text-purple-200 hover:bg-purple-900/50 hover:text-pink-400 transition-all duration-300">$100 - $200</button>
+                  <button className="block w-full text-left px-3 py-2 rounded-lg text-sm text-purple-200 hover:bg-purple-900/50 hover:text-pink-400 transition-all duration-300">Over $200</button>
                 </div>
               </div>
               
               {/* Stock Status Filter */}
               <div>
-                <h3 className="font-medium text-gray-900 mb-3">Stock Status</h3>
+                <h3 className="font-medium text-purple-300 mb-3">Stock Status</h3>
                 <div className="space-y-2">
-                  <button className="block w-full text-left px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">In Stock</button>
-                  <button className="block w-full text-left px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">Low Stock</button>
+                  <button className="block w-full text-left px-3 py-2 rounded-lg text-sm text-purple-200 hover:bg-purple-900/50 hover:text-pink-400 transition-all duration-300">In Stock</button>
+                  <button className="block w-full text-left px-3 py-2 rounded-lg text-sm text-purple-200 hover:bg-purple-900/50 hover:text-pink-400 transition-all duration-300">Low Stock</button>
                 </div>
               </div>
             </div>
@@ -648,12 +660,12 @@ export default function ShoppingPage() {
             <section id="products" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h1 className="text-4xl font-bold mb-4">
-                  <span className="bg-gradient-to-r from-[#F05454] to-[#D4AF37] bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent">
                     Our Products
                   </span>
                 </h1>
-                <div className="h-1 w-32 bg-gradient-to-r from-transparent via-[#F05454] to-transparent mx-auto mb-6"></div>
-                <p className="text-[#9CA3AF] text-lg max-w-2xl mx-auto">
+                <div className="h-1 w-32 bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto mb-6"></div>
+                <p className="text-purple-300 text-lg max-w-2xl mx-auto">
                   {referralAgent 
                     ? `Shopping through ${referralAgent}'s referral link` 
                     : 'Browse our premium collection'}
@@ -678,19 +690,19 @@ export default function ShoppingPage() {
               
               {filteredProducts.length === 0 ? (
                 <div className="text-center py-20">
-                  <div className="inline-block p-6 bg-gray-100 rounded-full mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-[#F05454]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="inline-block p-6 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-full mb-6 border border-purple-500/50 neon-border glowing">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-4">No products found</h3>
-                  <p className="text-gray-600 text-lg mb-6">Try changing your search or filter criteria</p>
+                  <h3 className="text-2xl font-semibold text-purple-200 mb-4">No products found</h3>
+                  <p className="text-purple-400 text-lg mb-6">Try changing your search or filter criteria</p>
                   <button 
                     onClick={() => {
                       setSelectedCategory('All');
                       setSearchQuery('');
                     }}
-                    className="px-8 py-3 bg-[#F05454] text-white rounded-lg hover:bg-[#D64545] transition-colors"
+                    className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 font-medium transform hover:scale-105 shadow-lg hover:shadow-pink-500/30"
                   >
                     Reset Filters
                   </button>
@@ -700,62 +712,62 @@ export default function ShoppingPage() {
                   {filteredProducts.map((product) => (
                     <div 
                       key={product.id} 
-                      className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                      className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-purple-500/30 glowing group"
                       onClick={() => window.location.href = `/product/${product.id}`}
                     >
                       <div className="relative pb-[100%]"> {/* Square aspect ratio */}
-                        <div className="absolute inset-0 bg-gray-200 border-2 border-dashed rounded-t-lg flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-900/20 border-2 border-dashed border-purple-500/50 rounded-t-lg flex items-center justify-center overflow-hidden">
                           {product.image ? (
                             <img 
                               src={product.image} 
                               alt={product.name} 
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                               onError={(e) => {
                                 const target = e.target as HTMLImageElement;
                                 target.src = '/placeholder-product.jpg';
                               }}
                             />
                           ) : (
-                            <span className="text-gray-500">Product Image</span>
+                            <span className="text-purple-300">Product Image</span>
                           )}
                         </div>
                       </div>
-                      <div className="p-4">
+                      <div className="p-5">
                         <div className="flex justify-between items-start mb-2">
                           <div>
-                            <h3 className="text-lg font-semibold text-gray-900 truncate group-hover:text-[#F05454]">{product.name}</h3>
-                            <p className="text-xs text-gray-500 mt-1">{product.category}</p>
+                            <h3 className="text-lg font-bold text-white truncate group-hover:text-pink-400 transition-colors duration-300">{product.name}</h3>
+                            <p className="text-xs text-purple-300 mt-1">{product.category}</p>
                           </div>
-                          <span className={`text-xs px-2 py-1 rounded ${
+                          <span className={`text-xs px-2 py-1 rounded-lg ${
                             product.stock > 5 
-                              ? 'bg-green-100 text-green-800' 
+                              ? 'bg-green-900/50 text-green-400' 
                               : product.stock > 0 
-                                ? 'bg-yellow-100 text-yellow-800' 
-                                : 'bg-red-100 text-red-800'
+                                ? 'bg-yellow-900/50 text-yellow-400' 
+                                : 'bg-red-900/50 text-red-400'
                           }`}>
                             {product.stock > 5 ? 'In Stock' : product.stock > 0 ? 'Low Stock' : 'Out of Stock'}
                           </span>
                         </div>
-                        <p className="mt-2 text-sm text-gray-600 line-clamp-2">{product.description}</p>
+                        <p className="mt-2 text-sm text-purple-200 line-clamp-2">{product.description}</p>
                         <div className="mt-2 flex flex-col items-start">
                           <div className="flex items-center">
                             <StarRating rating={getProductAverageRating(product.id)} size="text-xs" />
-                            <span className="ml-1 text-xs text-gray-600">{getProductAverageRating(product.id)}</span>
+                            <span className="ml-1 text-xs text-purple-400">{getProductAverageRating(product.id)}</span>
                           </div>
-                          <span className="text-xs text-gray-500 mt-1">{generateRandomReviews(product.id).length} reviews</span>
+                          <span className="text-xs text-purple-500 mt-1">{generateRandomReviews(product.id).length} reviews</span>
                         </div>
-                        <div className="mt-2 flex items-center justify-between">
-                          <span className="text-xl font-bold text-[#F05454]">${Number(product.price).toFixed(2)}</span>
+                        <div className="mt-3 flex items-center justify-between">
+                          <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">${Number(product.price).toFixed(2)}</span>
                           <button 
                             onClick={(e) => {
                               e.stopPropagation(); // Prevent click from propagating to parent div
                               handleAddToCart(product.id)
                             }}
                             disabled={product.stock <= 0}
-                            className={`px-3 py-1.5 text-sm rounded transition-colors ${
+                            className={`px-3 py-1.5 text-sm rounded-lg transition-all duration-300 transform hover:scale-105 ${
                               product.stock <= 0 
-                                ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
-                                : 'bg-[#F05454] text-white hover:bg-[#D64545]'
+                                ? 'bg-gray-700 text-gray-400 cursor-not-allowed' 
+                                : 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 shadow-lg hover:shadow-pink-500/30'
                             }`}
                           >
                             {product.stock <= 0 ? 'Out of Stock' : 'Add to Cart'}
@@ -772,8 +784,9 @@ export default function ShoppingPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-12 mt-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px]"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
@@ -782,34 +795,34 @@ export default function ShoppingPage() {
                   alt="Logo" 
                   className="h-8 w-8 mr-2"
                 />
-                <span className="text-xl font-bold">A World Marketing</span>
+                <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">A World Marketing</span>
               </div>
-              <p className="text-gray-400 text-sm">Premium products at unbeatable prices. Quality guaranteed with fast delivery.</p>
+              <p className="text-purple-300 text-sm">Premium products at unbeatable prices. Quality guaranteed with fast delivery.</p>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold text-purple-200 mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                <li><a href="/shop" className="text-gray-400 hover:text-white transition-colors">Shop</a></li>
-                <li><a href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                <li><a href="/" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">Home</a></li>
+                <li><a href="/shop" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">Shop</a></li>
+                <li><a href="/about" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">About Us</a></li>
+                <li><a href="/contact" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">Contact</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Customer Service</h3>
+              <h3 className="text-lg font-semibold text-purple-200 mb-4">Customer Service</h3>
               <ul className="space-y-2">
-                <li><a href="/help" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="/returns" className="text-gray-400 hover:text-white transition-colors">Returns</a></li>
-                <li><a href="/shipping" className="text-gray-400 hover:text-white transition-colors">Shipping Info</a></li>
-                <li><a href="/faq" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                <li><a href="/help" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">Help Center</a></li>
+                <li><a href="/returns" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">Returns</a></li>
+                <li><a href="/shipping" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">Shipping Info</a></li>
+                <li><a href="/faq" className="text-purple-300 hover:text-pink-400 transition-all duration-300 transform hover:translate-x-1">FAQ</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
-              <ul className="space-y-2 text-gray-400">
+              <h3 className="text-lg font-semibold text-purple-200 mb-4">Contact Info</h3>
+              <ul className="space-y-2 text-purple-300">
                 <li>Email: info@aworldmarketing.com</li>
                 <li>Phone: +1 (555) 123-4567</li>
                 <li>Address: 123 Business St, City</li>
@@ -817,7 +830,7 @@ export default function ShoppingPage() {
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <div className="border-t border-purple-500/30 mt-8 pt-8 text-center text-purple-400 text-sm">
             <p>&copy; 2026 A World Marketing. All rights reserved.</p>
           </div>
         </div>

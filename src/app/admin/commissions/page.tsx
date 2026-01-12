@@ -113,25 +113,32 @@ export default function CommissionsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-dark-main flex items-center justify-center">
-        <div className="text-lg text-dark-text">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="text-lg text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 relative z-10">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      
+      <main className="py-6 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Commission Management</h2>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">Commission Management</h2>
           </div>
 
           {/* Filters */}
-          <div className="bg-white shadow-lg rounded-lg p-4 mb-6 border border-gray-200">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl rounded-2xl p-6 mb-8 border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="status" className="block text-sm font-bold text-purple-300 mb-2">
                   Status
                 </label>
                 <select
@@ -139,7 +146,7 @@ export default function CommissionsPage() {
                   name="status"
                   value={filters.status}
                   onChange={handleFilterChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 >
                   <option value="">All Statuses</option>
                   <option value="PENDING">Pending</option>
@@ -150,7 +157,7 @@ export default function CommissionsPage() {
               </div>
               
               <div>
-                <label htmlFor="agent" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="agent" className="block text-sm font-bold text-purple-300 mb-2">
                   Agent
                 </label>
                 <select
@@ -158,7 +165,7 @@ export default function CommissionsPage() {
                   name="agent"
                   value={filters.agent}
                   onChange={handleFilterChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                  className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                 >
                   <option value="">All Agents</option>
                   {/* Agents will be populated dynamically */}
@@ -167,57 +174,57 @@ export default function CommissionsPage() {
             </div>
           </div>
 
-          <div className="bg-white shadow-lg overflow-hidden sm:rounded-md border border-gray-200">
-            <ul className="divide-y divide-gray-200">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl overflow-hidden sm:rounded-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <ul className="divide-y divide-purple-500/30">
               {filteredCommissions.map((commission) => (
-                <li key={commission.id}>
-                  <div className="px-4 py-4 sm:px-6">
+                <li key={commission.id} className="transition-all duration-300 hover:bg-gray-700/30">
+                  <div className="px-6 py-6 sm:px-8">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <p className="text-sm font-medium text-gray-900 truncate">
+                        <p className="text-sm font-bold text-white truncate">
                           ${commission.amount} commission
                         </p>
-                        <div className="ml-2 inline-flex items-center">
+                        <div className="ml-4 inline-flex items-center">
                           {commission.status === 'PENDING' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg shadow-yellow-500/20">
                               Pending
                             </span>
                           )}
                           {commission.status === 'APPROVED' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20">
                               Approved
                             </span>
                           )}
                           {commission.status === 'PAID' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/20">
                               Paid
                             </span>
                           )}
                           {commission.status === 'BLOCKED' && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg shadow-red-500/20">
                               Blocked
                             </span>
                           )}
                         </div>
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-purple-300">
                         <p>Order #{commission.order?.id?.substring(0, 8)} • Agent: {commission.user?.email}</p>
                       </div>
                     </div>
-                    <div className="mt-2 sm:flex sm:justify-between">
+                    <div className="mt-4 sm:flex sm:justify-between">
                       <div className="sm:flex">
-                        <p className="flex items-center text-sm text-gray-500">
+                        <p className="flex items-center text-sm text-purple-300">
                           Created: {new Date(commission.createdAt).toLocaleDateString()}
                         </p>
                       </div>
-                      <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                      <div className="mt-3 flex items-center text-sm sm:mt-0">
                         <button
                           onClick={() => updateCommissionStatus(commission.id, 'APPROVED')}
                           disabled={commission.status !== 'PENDING'}
-                          className={`ml-4 px-3 py-1 text-xs font-medium rounded-full ${
+                          className={`ml-4 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
                             commission.status === 'PENDING'
-                              ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20 hover:from-blue-700 hover:to-indigo-700'
+                              : 'bg-gray-600 text-gray-400 cursor-not-allowed opacity-50'
                           }`}
                         >
                           Approve
@@ -225,10 +232,10 @@ export default function CommissionsPage() {
                         <button
                           onClick={() => updateCommissionStatus(commission.id, 'BLOCKED')}
                           disabled={commission.status !== 'PENDING'}
-                          className={`ml-2 px-3 py-1 text-xs font-medium rounded-full ${
+                          className={`ml-3 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
                             commission.status === 'PENDING'
-                              ? 'bg-red-100 text-red-800 hover:bg-red-200'
-                              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                              ? 'bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg shadow-red-500/20 hover:from-red-700 hover:to-pink-700'
+                              : 'bg-gray-600 text-gray-400 cursor-not-allowed opacity-50'
                           }`}
                         >
                           Block
@@ -236,10 +243,10 @@ export default function CommissionsPage() {
                         <button
                           onClick={() => updateCommissionStatus(commission.id, 'PAID')}
                           disabled={commission.status !== 'APPROVED'}
-                          className={`ml-2 px-3 py-1 text-xs font-medium rounded-full ${
+                          className={`ml-3 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
                             commission.status === 'APPROVED'
-                              ? 'bg-green-100 text-green-800 hover:bg-green-200'
-                              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                              ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/20 hover:from-green-700 hover:to-emerald-700'
+                              : 'bg-gray-600 text-gray-400 cursor-not-allowed opacity-50'
                           }`}
                         >
                           Mark Paid

@@ -109,25 +109,32 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-dark-main flex items-center justify-center">
-        <div className="text-lg text-dark-text">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="text-lg text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 relative z-10">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      
+      <main className="py-6 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">System Settings</h2>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">System Settings</h2>
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl rounded-2xl p-8 border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="defaultCommissionRate" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="defaultCommissionRate" className="block text-sm font-bold text-purple-300 mb-2">
                     Default Commission Rate (%)
                   </label>
                   <input
@@ -139,12 +146,12 @@ export default function SettingsPage() {
                     step="0.01"
                     min="0"
                     max="100"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                    className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="minimumPayoutThreshold" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="minimumPayoutThreshold" className="block text-sm font-bold text-purple-300 mb-2">
                     Minimum Payout Threshold ($)
                   </label>
                   <input
@@ -155,7 +162,7 @@ export default function SettingsPage() {
                     onChange={handleSettingChange}
                     step="0.01"
                     min="0"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                    className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                   />
                 </div>
 
@@ -167,9 +174,9 @@ export default function SettingsPage() {
                       type="checkbox"
                       checked={settings.enableAgentRegistrations}
                       onChange={handleSettingChange}
-                      className="h-4 w-4 text-[#F05454] focus:ring-[#F05454] border-gray-300 rounded bg-white"
+                      className="h-5 w-5 text-pink-500 focus:ring-pink-500 border-purple-500 rounded bg-gray-700"
                     />
-                    <label htmlFor="enableAgentRegistrations" className="ml-2 block text-sm text-gray-900">
+                    <label htmlFor="enableAgentRegistrations" className="ml-3 block text-sm font-bold text-purple-200">
                       Enable Agent Registrations
                     </label>
                   </div>
@@ -183,22 +190,22 @@ export default function SettingsPage() {
                       type="checkbox"
                       checked={settings.systemMaintenanceMode}
                       onChange={handleSettingChange}
-                      className="h-4 w-4 text-[#F05454] focus:ring-[#F05454] border-gray-300 rounded bg-white"
+                      className="h-5 w-5 text-pink-500 focus:ring-pink-500 border-purple-500 rounded bg-gray-700"
                     />
-                    <label htmlFor="systemMaintenanceMode" className="ml-2 block text-sm text-gray-900">
+                    <label htmlFor="systemMaintenanceMode" className="ml-3 block text-sm font-bold text-purple-200">
                       System Maintenance Mode
                     </label>
                   </div>
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-purple-400">
                     When enabled, non-admin users will see a maintenance message.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-10">
                 <button
                   type="submit"
-                  className="px-4 py-2 text-sm font-medium text-white bg-[#F05454] rounded-md hover:bg-[#D64545] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F05454]"
+                  className="px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl hover:from-pink-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-pink-500/50 shadow-lg shadow-pink-500/30 transition-all duration-300 transform hover:scale-105"
                 >
                   Save Settings
                 </button>
@@ -206,24 +213,24 @@ export default function SettingsPage() {
             </form>
           </div>
 
-          <div className="mt-8 bg-white shadow-lg rounded-lg p-6 border border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">System Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-gray-500">Database Status</p>
-                <p className="text-sm font-medium text-green-600">Connected</p>
+          <div className="mt-8 bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl rounded-2xl p-8 border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <h3 className="text-xl font-bold text-purple-200 mb-6">System Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-700/50 p-4 rounded-xl border border-purple-500/30">
+                <p className="text-sm text-purple-300">Database Status</p>
+                <p className="text-sm font-bold text-green-400">Connected</p>
               </div>
-              <div>
-                <p className="text-sm text-gray-500">Server Uptime</p>
-                <p className="text-sm font-medium text-gray-900">24 hours</p>
+              <div className="bg-gray-700/50 p-4 rounded-xl border border-purple-500/30">
+                <p className="text-sm text-purple-300">Server Uptime</p>
+                <p className="text-sm font-bold text-purple-200">24 hours</p>
               </div>
-              <div>
-                <p className="text-sm text-gray-500">Total Users</p>
-                <p className="text-sm font-medium text-gray-900">150</p>
+              <div className="bg-gray-700/50 p-4 rounded-xl border border-purple-500/30">
+                <p className="text-sm text-purple-300">Total Users</p>
+                <p className="text-sm font-bold text-purple-200">150</p>
               </div>
-              <div>
-                <p className="text-sm text-gray-500">Total Products</p>
-                <p className="text-sm font-medium text-gray-900">42</p>
+              <div className="bg-gray-700/50 p-4 rounded-xl border border-purple-500/30">
+                <p className="text-sm text-purple-300">Total Products</p>
+                <p className="text-sm font-bold text-purple-200">42</p>
               </div>
             </div>
           </div>

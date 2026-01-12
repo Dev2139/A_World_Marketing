@@ -144,33 +144,40 @@ export default function AgentsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-dark-main flex items-center justify-center">
-        <div className="text-lg text-dark-text">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="text-lg text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400 relative z-10">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      
+      <main className="py-6 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Agents Management</h2>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">Agents Management</h2>
             <button
               onClick={() => setShowCreateForm(!showCreateForm)}
-              className="px-4 py-2 text-sm font-medium text-white bg-[#F05454] rounded-md hover:bg-[#D64545] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F05454]"
+              className="px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl hover:from-pink-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-pink-500/50 shadow-lg shadow-pink-500/30 transition-all duration-300 transform hover:scale-105"
             >
               {showCreateForm ? 'Cancel' : 'Create Agent'}
             </button>
           </div>
 
           {showCreateForm && (
-            <div className="bg-white shadow-lg rounded-lg p-6 mb-8 border border-gray-200">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Create New Agent</h3>
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl rounded-2xl p-8 mb-12 border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+              <h3 className="text-xl font-bold text-purple-200 mb-6">Create New Agent</h3>
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="email" className="block text-sm font-medium text-purple-300 mb-2">
                       Email
                     </label>
                     <input
@@ -180,12 +187,12 @@ export default function AgentsPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                      className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="password" className="block text-sm font-medium text-purple-300 mb-2">
                       Password
                     </label>
                     <input
@@ -195,12 +202,12 @@ export default function AgentsPage() {
                       value={formData.password}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                      className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="firstName" className="block text-sm font-medium text-purple-300 mb-2">
                       First Name
                     </label>
                     <input
@@ -210,12 +217,12 @@ export default function AgentsPage() {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                      className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="lastName" className="block text-sm font-medium text-purple-300 mb-2">
                       Last Name
                     </label>
                     <input
@@ -225,12 +232,12 @@ export default function AgentsPage() {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                      className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="mobileNumber" className="block text-sm font-medium text-purple-300 mb-2">
                       Mobile Number
                     </label>
                     <input
@@ -240,12 +247,12 @@ export default function AgentsPage() {
                       value={formData.mobileNumber}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                      className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="bankDetails" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="bankDetails" className="block text-sm font-medium text-purple-300 mb-2">
                       Bank Details
                     </label>
                     <input
@@ -255,15 +262,15 @@ export default function AgentsPage() {
                       value={formData.bankDetails}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white text-gray-900 focus:outline-none focus:ring-[#F05454] focus:border-[#F05454] sm:text-sm"
+                      className="mt-1 block w-full border-2 border-purple-500/50 bg-gray-700 text-white rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500/50 sm:text-sm bg-gradient-to-r from-purple-900/30 to-pink-900/30"
                     />
                   </div>
                 </div>
 
-                <div className="mt-6">
+                <div className="mt-8">
                   <button
                     type="submit"
-                    className="px-4 py-2 text-sm font-medium text-white bg-[#F05454] rounded-md hover:bg-[#D64545] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F05454]"
+                    className="px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl hover:from-pink-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-pink-500/50 shadow-lg shadow-pink-500/30 transition-all duration-300 transform hover:scale-105"
                   >
                     Create Agent
                   </button>
@@ -272,57 +279,57 @@ export default function AgentsPage() {
             </div>
           )}
 
-          <div className="bg-white shadow-lg overflow-hidden sm:rounded-md border border-gray-200">
-            <ul className="divide-y divide-gray-200">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl overflow-hidden sm:rounded-2xl border border-purple-500/30 glowing transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <ul className="divide-y divide-purple-500/30">
               {agents.map((agent) => (
-                <li key={agent.id}>
-                  <div className="px-4 py-4 sm:px-6">
+                <li key={agent.id} className="transition-all duration-300 hover:bg-gray-700/30">
+                  <div className="px-6 py-6 sm:px-8">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <p className="text-sm font-medium text-gray-900 truncate">
+                        <p className="text-sm font-bold text-white truncate">
                           {agent.email}
                         </p>
-                        <div className="ml-2 inline-flex items-center">
+                        <div className="ml-4 inline-flex items-center">
                           {agent.isActive ? (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/20">
                               Active
                             </span>
                           ) : (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg shadow-red-500/20">
                               Suspended
                             </span>
                           )}
                         </div>
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-purple-300">
                         <p>Referrals: {agent.totalReferrals || 0} • Sales: ${agent.totalSales?.toLocaleString() || 0} • Commission: ${agent.totalCommission?.toLocaleString() || 0}</p>
-                        <div className="flex items-center mt-1">
-                          <p className="text-xs text-gray-700 truncate">{agent.referralLink}</p>
+                        <div className="flex items-center mt-2">
+                          <p className="text-xs text-purple-400 truncate max-w-xs">{agent.referralLink}</p>
                           <button
                             onClick={() => {
                               navigator.clipboard.writeText(agent.referralLink);
                               alert('Referral link copied to clipboard!');
                             }}
-                            className="ml-2 px-2 py-1 text-xs text-white bg-gray-600 rounded hover:bg-gray-700"
+                            className="ml-3 px-3 py-1 text-xs text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300"
                           >
                             Copy
                           </button>
                         </div>
                       </div>
                     </div>
-                    <div className="mt-2 sm:flex sm:justify-between">
+                    <div className="mt-4 sm:flex sm:justify-between">
                       <div className="sm:flex">
-                        <p className="flex items-center text-sm text-gray-500">
+                        <p className="flex items-center text-sm text-purple-300">
                           Agent ID: {agent.id}
                         </p>
                       </div>
-                      <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                      <div className="mt-3 flex items-center text-sm sm:mt-0">
                         <button
                           onClick={() => toggleAgentStatus(agent.id, agent.isActive)}
-                          className={`ml-4 px-3 py-1 text-xs font-medium rounded-full ${
+                          className={`ml-4 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
                             agent.isActive 
-                              ? 'bg-red-100 text-red-800 hover:bg-red-200' 
-                              : 'bg-green-100 text-green-800 hover:bg-green-200'
+                              ? 'bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg shadow-red-500/20 hover:from-red-700 hover:to-pink-700' 
+                              : 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/20 hover:from-green-700 hover:to-emerald-700'
                           }`}
                         >
                           {agent.isActive ? 'Suspend' : 'Approve'}
@@ -331,7 +338,7 @@ export default function AgentsPage() {
                           onClick={() => {
                             // Implement commission override functionality
                           }}
-                          className="ml-2 px-3 py-1 text-xs font-medium text-white bg-[#F05454] rounded-full hover:bg-[#D64545]"
+                          className="ml-3 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-full hover:from-pink-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-pink-500/20"
                         >
                           Override Commission
                         </button>
