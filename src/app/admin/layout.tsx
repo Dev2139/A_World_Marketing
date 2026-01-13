@@ -93,12 +93,12 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-red-900 to-black flex relative overflow-hidden">
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse-glow"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse-glow animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse-glow animation-delay-4000"></div>
       </div>
       
       {/* Mobile sidebar */}
@@ -112,12 +112,12 @@ export default function AdminLayout({
               alt="Logo" 
               className="h-12 w-12 mb-2 rounded-full border-2 border-pink-500/50"
             />
-            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">A World Marketing</h2>
+            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-400">AWM Store</h2>
           </div>
           <nav className="mt-6">
             <Link 
               href="/admin/dashboard" 
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/dashboard' ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/30' : 'hover:bg-gray-700/50 hover:text-pink-400 text-purple-200'}`}
+              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/dashboard' ? 'bg-gradient-to-r from-red-600 to-yellow-600 text-white shadow-lg shadow-red-500/30' : 'hover:bg-gray-700/50 hover:text-red-400 text-red-200'}`}
               onClick={() => setSidebarOpen(false)}
             >
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +127,7 @@ export default function AdminLayout({
             </Link>
             <Link 
               href="/admin/products" 
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/products' ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/30' : 'hover:bg-gray-700/50 hover:text-pink-400 text-purple-200'}`}
+              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/products' ? 'bg-gradient-to-r from-red-600 to-yellow-600 text-white shadow-lg shadow-red-500/30' : 'hover:bg-gray-700/50 hover:text-red-400 text-red-200'}`}
               onClick={() => setSidebarOpen(false)}
             >
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +137,7 @@ export default function AdminLayout({
             </Link>
             <Link 
               href="/admin/agents" 
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/agents' ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/30' : 'hover:bg-gray-700/50 hover:text-pink-400 text-purple-200'}`}
+              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/agents' ? 'bg-gradient-to-r from-red-600 to-yellow-600 text-white shadow-lg shadow-red-500/30' : 'hover:bg-gray-700/50 hover:text-red-400 text-red-200'}`}
               onClick={() => setSidebarOpen(false)}
             >
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +147,7 @@ export default function AdminLayout({
             </Link>
             <Link 
               href="/admin/orders" 
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/orders' ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/30' : 'hover:bg-gray-700/50 hover:text-pink-400 text-purple-200'}`}
+              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/orders' ? 'bg-gradient-to-r from-red-600 to-yellow-600 text-white shadow-lg shadow-red-500/30' : 'hover:bg-gray-700/50 hover:text-red-400 text-red-200'}`}
               onClick={() => setSidebarOpen(false)}
             >
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +157,7 @@ export default function AdminLayout({
             </Link>
             <Link 
               href="/admin/commissions" 
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/commissions' ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/30' : 'hover:bg-gray-700/50 hover:text-pink-400 text-purple-200'}`}
+              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/commissions' ? 'bg-gradient-to-r from-red-600 to-yellow-600 text-white shadow-lg shadow-red-500/30' : 'hover:bg-gray-700/50 hover:text-red-400 text-red-200'}`}
               onClick={() => setSidebarOpen(false)}
             >
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -167,7 +167,7 @@ export default function AdminLayout({
             </Link>
             <Link 
               href="/admin/payouts" 
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/payouts' ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/30' : 'hover:bg-gray-700/50 hover:text-pink-400 text-purple-200'}`}
+              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/payouts' ? 'bg-gradient-to-r from-red-600 to-yellow-600 text-white shadow-lg shadow-red-500/30' : 'hover:bg-gray-700/50 hover:text-red-400 text-red-200'}`}
               onClick={() => setSidebarOpen(false)}
             >
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -177,7 +177,7 @@ export default function AdminLayout({
             </Link>
             <Link 
               href="/admin/settings" 
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/settings' ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/30' : 'hover:bg-gray-700/50 hover:text-pink-400 text-purple-200'}`}
+              className={`block py-3 px-4 rounded-xl transition-all duration-300 mb-3 flex items-center ${pathname === '/admin/settings' ? 'bg-gradient-to-r from-red-600 to-yellow-600 text-white shadow-lg shadow-red-500/30' : 'hover:bg-gray-700/50 hover:text-red-400 text-red-200'}`}
               onClick={() => setSidebarOpen(false)}
             >
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -192,7 +192,7 @@ export default function AdminLayout({
 
       {/* Mobile menu button */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 shadow-lg shadow-pink-500/30 z-50"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-gradient-to-r from-red-600 to-yellow-600 shadow-lg shadow-red-500/30 z-50"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         {sidebarOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
@@ -201,16 +201,16 @@ export default function AdminLayout({
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col md:ml-64 relative z-10">
         {/* Top Navigation */}
-        <header className="bg-gradient-to-r from-gray-800 to-gray-900 shadow-lg border-b border-purple-500/30 sticky top-0 z-10 backdrop-blur-md">
+        <header className="bg-gradient-to-r from-red-800 to-red-900 shadow-lg border-b border-red-500/30 sticky top-0 z-10 backdrop-blur-md">
           <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center">
-              <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-yellow-400">{getHeaderTitle(pathname)}</h1>
+              <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-400">{getHeaderTitle(pathname)}</h1>
             </div>
             <div className="flex items-center">
               <span className="text-purple-200 mr-4 hidden sm:block">Welcome, {user?.email}</span>
               <button
                 onClick={handleLogout}
-                className="ml-4 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 rounded-lg transition-all duration-300 shadow-lg shadow-pink-500/30"
+                className="ml-4 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-600 to-yellow-600 hover:from-red-700 hover:to-yellow-700 rounded-lg transition-all duration-300 shadow-lg shadow-red-500/30"
               >
                 Logout
               </button>

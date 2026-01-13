@@ -131,12 +131,12 @@ export default function OrderSuccessPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-red-900 via-red-700 to-yellow-600 text-white py-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse-glow"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse-glow animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse-glow animation-delay-4000"></div>
       </div>
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -144,46 +144,46 @@ export default function OrderSuccessPage() {
         <div className="mb-6 text-right">
           <button
             onClick={printInvoice}
-            className="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            className="px-4 py-2 bg-gradient-to-r from-red-500 to-yellow-600 text-white rounded-lg hover:from-red-600 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105"
           >
             Print Invoice
           </button>
         </div>
         
         {/* Invoice Header */}
-        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl border border-purple-500/30 p-8">
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl border border-red-500/30 p-8">
           <div className="flex flex-col md:flex-row justify-between items-start mb-8">
             <div>
-              <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500 mb-2">A World Marketing</h1>
-              <p className="text-purple-200">Premium Products & Services</p>
-              <p className="text-purple-400 text-sm">123 Business Street, City, Country</p>
-              <p className="text-purple-400 text-sm">Phone: +1 (555) 123-4567 | Email: info@aworldmarketing.com</p>
+              <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500 mb-2">A World Marketing</h1>
+              <p className="text-red-200">Premium Products & Services</p>
+              <p className="text-red-400 text-sm">123 Business Street, City, Country</p>
+              <p className="text-red-400 text-sm">Phone: +1 (555) 123-4567 | Email: info@aworldmarketing.com</p>
             </div>
             <div className="mt-4 md:mt-0 text-right">
-              <h2 className="text-2xl font-bold text-pink-400">INVOICE</h2>
-              <p className="text-purple-200 mt-2">Order # {order.orderNumber}</p>
-              <p className="text-purple-400">Date: {new Date(order.createdAt).toLocaleDateString()}</p>
+              <h2 className="text-2xl font-bold text-red-400">INVOICE</h2>
+              <p className="text-red-200 mt-2">Order # {order.orderNumber}</p>
+              <p className="text-red-400">Date: {new Date(order.createdAt).toLocaleDateString()}</p>
             </div>
           </div>
           
-          <hr className="border-purple-500/50 my-6" />
+          <hr className="border-red-500/50 my-6" />
           
           {/* Bill To Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-lg font-semibold text-purple-200 mb-2">Bill To:</h3>
-              <p className="text-purple-200">{order.customer.firstName} {order.customer.lastName}</p>
-              <p className="text-purple-400">{order.customer.email}</p>
-              {order.customer.address && <p className="text-purple-400">{order.customer.address}</p>}
-              {order.customer.phone && <p className="text-purple-400">{order.customer.phone}</p>}
+              <h3 className="text-lg font-semibold text-red-200 mb-2">Bill To:</h3>
+              <p className="text-red-200">{order.customer.firstName} {order.customer.lastName}</p>
+              <p className="text-red-400">{order.customer.email}</p>
+              {order.customer.address && <p className="text-red-400">{order.customer.address}</p>}
+              {order.customer.phone && <p className="text-red-400">{order.customer.phone}</p>}
             </div>
             
             {/* Agent Details (if applicable) */}
             {order.agent && (
               <div>
-                <h3 className="text-lg font-semibold text-purple-200 mb-2">Referred By:</h3>
-                <p className="text-purple-200">{order.agent.firstName} {order.agent.lastName}</p>
-                <p className="text-purple-400">{order.agent.email}</p>
+                <h3 className="text-lg font-semibold text-red-200 mb-2">Referred By:</h3>
+                <p className="text-red-200">{order.agent.firstName} {order.agent.lastName}</p>
+                <p className="text-red-400">{order.agent.email}</p>
               </div>
             )}
           </div>
@@ -193,7 +193,7 @@ export default function OrderSuccessPage() {
             <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
               order.status === 'CONFIRMED' ? 'bg-green-900/50 text-green-400' :
               order.status === 'SHIPPED' ? 'bg-blue-900/50 text-blue-400' :
-              order.status === 'DELIVERED' ? 'bg-purple-900/50 text-purple-400' :
+              order.status === 'DELIVERED' ? 'bg-purple-900/50 text-red-400' :
               'bg-yellow-900/50 text-yellow-400'
             }`}>
               Status: {order.status}
@@ -204,20 +204,20 @@ export default function OrderSuccessPage() {
           <div className="overflow-x-auto mb-8">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-purple-500/50">
-                  <th className="text-left py-3 text-purple-200">Product</th>
-                  <th className="text-right py-3 text-purple-200">Price</th>
-                  <th className="text-center py-3 text-purple-200">Qty</th>
-                  <th className="text-right py-3 text-purple-200">Total</th>
+                <tr className="border-b border-red-500/50">
+                  <th className="text-left py-3 text-red-200">Product</th>
+                  <th className="text-right py-3 text-red-200">Price</th>
+                  <th className="text-center py-3 text-red-200">Qty</th>
+                  <th className="text-right py-3 text-red-200">Total</th>
                 </tr>
               </thead>
               <tbody>
                 {order.products.map((product, index) => (
-                  <tr key={index} className="border-b border-purple-500/50">
-                    <td className="py-3 text-purple-200">{product.name}</td>
-                    <td className="py-3 text-right text-purple-200">${Number(product.price).toFixed(2)}</td>
-                    <td className="py-3 text-center text-purple-200">{product.quantity}</td>
-                    <td className="py-3 text-right text-purple-200">
+                  <tr key={index} className="border-b border-red-500/50">
+                    <td className="py-3 text-red-200">{product.name}</td>
+                    <td className="py-3 text-right text-red-200">${Number(product.price).toFixed(2)}</td>
+                    <td className="py-3 text-center text-red-200">{product.quantity}</td>
+                    <td className="py-3 text-right text-red-200">
                       ${(Number(product.price) * product.quantity).toFixed(2)}
                     </td>
                   </tr>
@@ -231,29 +231,29 @@ export default function OrderSuccessPage() {
             <div className="w-full md:w-1/3">
               <div className="flex justify-between py-2">
                 <span className="text-purple-300">Subtotal:</span>
-                <span className="text-purple-200">
+                <span className="text-red-200">
                   ${order.subtotal ? order.subtotal.toFixed(2) : order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0).toFixed(2)}
                 </span>
               </div>
               <div className="flex justify-between py-2">
                 <span className="text-purple-300">Tax:</span>
-                <span className="text-purple-200">
+                <span className="text-red-200">
                   ${order.tax ? order.tax.toFixed(2) : (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) * 0.08).toFixed(2)}
                 </span>
               </div>
-              <div className="flex justify-between py-2 border-t border-purple-500/50 pt-2">
-                <span className="text-lg font-bold text-purple-200">Total:</span>
-                <span className="text-lg font-bold text-pink-400">${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) + (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) * 0.08)).toFixed(2)}</span>
+              <div className="flex justify-between py-2 border-t border-red-500/50 pt-2">
+                <span className="text-lg font-bold text-red-200">Total:</span>
+                <span className="text-lg font-bold text-red-400">${order.subtotal && order.tax ? (order.subtotal + order.tax + (order.shipping || 0)).toFixed(2) : (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) + (order.products.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0) * 0.08)).toFixed(2)}</span>
               </div>
             </div>
           </div>
           
-          <hr className="border-purple-500/50 my-6" />
+          <hr className="border-red-500/50 my-6" />
           
           {/* Thank You Message */}
           <div className="text-center">
-            <p className="text-purple-200 mb-4">Thank you for your purchase! We appreciate your business.</p>
-            <p className="text-purple-400 text-sm">This invoice is proof of your purchase. Please keep it for your records.</p>
+            <p className="text-red-200 mb-4">Thank you for your purchase! We appreciate your business.</p>
+            <p className="text-red-400 text-sm">This invoice is proof of your purchase. Please keep it for your records.</p>
           </div>
         </div>
                 
@@ -261,19 +261,19 @@ export default function OrderSuccessPage() {
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
           <button
             onClick={printInvoice}
-            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/30"
+            className="px-6 py-3 bg-gradient-to-r from-red-500 to-yellow-600 text-white rounded-lg hover:from-red-600 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/30"
           >
             Print Invoice
           </button>
           <button
             onClick={() => router.push('/shop')}
-            className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/30"
+            className="px-6 py-3 bg-gradient-to-r from-red-600 to-yellow-600 text-white rounded-lg hover:from-red-700 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/30"
           >
             Continue Shopping
           </button>
           <button
             onClick={() => router.push('/')}
-            className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-lg hover:from-indigo-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/30"
+            className="px-6 py-3 bg-gradient-to-r from-red-600 to-yellow-600 text-white rounded-lg hover:from-red-700 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/30"
           >
             Back to Home
           </button>

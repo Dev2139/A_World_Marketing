@@ -51,25 +51,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-900 via-red-700 to-yellow-600 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse-glow"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse-glow animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse-glow animation-delay-4000"></div>
       </div>
       
-      <div className="w-full max-w-md bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border border-purple-500/30 relative z-10">
+      <div className="w-full max-w-md bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border border-red-500/30 relative z-10">
         <div className="text-center mb-8">
           <img 
             src="https://res.cloudinary.com/dsddldquo/image/upload/v1767897434/fh3gbxyxerehs6qryxqn.png" 
             alt="Logo" 
             className="h-20 w-20 mx-auto mb-4"
           />
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500 mb-2">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500 mb-2">
             Login
           </h1>
-          <p className="mt-2 text-purple-300">
+          <p className="mt-2 text-red-300">
             Sign in to your account
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function LoginPage() {
                     
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-purple-300 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-red-300 mb-1">
                 Email
               </label>
               <Input
@@ -92,13 +92,13 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-3 py-3 border border-purple-500/50 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500/50"
+                className="w-full px-3 py-3 border border-red-500/50 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500/50"
                 placeholder="Enter your email"
               />
             </div>
                       
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-purple-300 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-red-300 mb-1">
                 Password
               </label>
               <Input
@@ -107,7 +107,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-3 py-3 border border-purple-500/50 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500/50"
+                className="w-full px-3 py-3 border border-red-500/50 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500/50"
                 placeholder="Enter your password"
               />
             </div>
@@ -115,16 +115,16 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-4 rounded-lg hover:from-pink-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-pink-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
+              className="w-full bg-gradient-to-r from-red-500 to-yellow-600 text-white py-3 px-4 rounded-lg hover:from-red-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
             >
               {loading ? 'Logging in...' : 'Login'}
             </Button>
           </form>
           
-          <div className="text-center text-sm text-purple-400 mt-6">
+          <div className="text-center text-sm text-red-400 mt-6">
             <p>
               Default admin credentials: admin@me.com / 123456<br />
-              <span className="text-xs text-pink-400">Please change password after first login</span>
+              <span className="text-xs text-red-400">Please change password after first login</span>
             </p>
 
           </div>
